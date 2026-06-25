@@ -1,13 +1,33 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Search, ArrowRight, ArrowLeft } from 'lucide-react';
 import { categories } from '../data/menu';
 
 export default function MenuSection() {
-  const [activeCategory, setActiveCategory] = useState<string>('all');
+  const [activeCategory, setActiveCategory] = useState<string>(categories[0].id);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [vegOnly, setVegOnly] = useState<boolean>(false);
   
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const activeCategoryRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    // Automatically center the selected category in the horizontal scroll
+    if (activeCategoryRef.current && scrollContainerRef.current) {
+      const container = scrollContainerRef.current;
+      const element = activeCategoryRef.current;
+      
+      const containerWidth = container.offsetWidth;
+      const elementOffsetLeft = element.offsetLeft;
+      const elementWidth = element.offsetWidth;
+      
+      const scrollPosition = elementOffsetLeft - (containerWidth / 2) + (elementWidth / 2);
+      
+      container.scrollTo({
+        left: scrollPosition,
+        behavior: 'smooth'
+      });
+    }
+  }, [activeCategory]);
 
   const scrollTabs = (direction: 'left' | 'right') => {
     if (scrollContainerRef.current) {
@@ -35,9 +55,8 @@ export default function MenuSection() {
 
     result = result.filter(cat => cat.items.length > 0);
 
-    if (activeCategory !== 'all') {
-      result = result.filter(cat => cat.id === activeCategory);
-    }
+    // Only show the active category
+    result = result.filter(cat => cat.id === activeCategory);
 
     return result;
   };
@@ -116,12 +135,12 @@ export default function MenuSection() {
               </button>
 
               {/* Reset Filters button */}
-              {(searchQuery || vegOnly || activeCategory !== 'all') && (
+              {(searchQuery || vegOnly || activeCategory !== categories[0].id) && (
                 <button
                   onClick={() => {
                     setSearchQuery('');
                     setVegOnly(false);
-                    setActiveCategory('all');
+                    setActiveCategory(categories[0].id);
                   }}
                   className="text-[11px] font-bold text-[#8B6B4D] hover:text-[#2D241F] uppercase tracking-wider transition-colors cursor-pointer"
                   id="btn-reset-filters"
@@ -151,24 +170,13 @@ export default function MenuSection() {
             className="flex space-x-2.5 overflow-x-auto py-2 px-8 scrollbar-none select-none no-scrollbar"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
-            {/* Show All tab */}
-            <button
-              onClick={() => setActiveCategory('all')}
-              className={`flex items-center space-x-2 px-5 py-2.5 rounded-full text-[11px] font-bold uppercase tracking-widest transition-all duration-300 cursor-pointer shrink-0 border ${
-                activeCategory === 'all'
-                  ? 'bg-[#8B6B4D] border-[#8B6B4D] text-[#FFFDF9] shadow-[0_4px_12px_rgba(139,107,77,0.15)]'
-                  : 'bg-[#FFFDF9] border-[#DDD2C2] text-[#6A5A4D] hover:text-[#2D241F] hover:border-[#2D241F]/30'
-              }`}
-            >
-              <span>All Items</span>
-            </button>
-
             {/* 18 Category tabs */}
             {categories.map((cat) => {
               const isActive = activeCategory === cat.id;
               return (
                 <button
                   key={cat.id}
+                  ref={isActive ? activeCategoryRef : null}
                   onClick={() => setActiveCategory(cat.id)}
                   className={`flex items-center space-x-2.5 px-4 py-2.5 rounded-full text-[11px] font-bold uppercase tracking-widest transition-all duration-300 cursor-pointer shrink-0 border ${
                     isActive
@@ -284,12 +292,12 @@ export default function MenuSection() {
                 onClick={() => {
                   setSearchQuery('');
                   setVegOnly(false);
-                  setActiveCategory('all');
+                  setActiveCategory(categories[0].id);
                 }}
                 className="mt-4 px-6 py-2.5 bg-[#8B6B4D] text-[#FFFDF9] hover:bg-[#A67C52] border border-[#8B6B4D] text-[10px] font-bold uppercase tracking-widest rounded-full transition-all"
                 id="btn-no-match-clear"
               >
-                Show All Items
+                Clear Filters
               </button>
             </div>
           )}
