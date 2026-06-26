@@ -11,25 +11,6 @@ export default function MenuSection() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const activeCategoryRef = useRef<HTMLButtonElement>(null);
 
-  useEffect(() => {
-    // Automatically center the selected category in the horizontal scroll
-    if (activeCategoryRef.current && scrollContainerRef.current) {
-      const container = scrollContainerRef.current;
-      const element = activeCategoryRef.current;
-      
-      const containerWidth = container.offsetWidth;
-      const elementOffsetLeft = element.offsetLeft;
-      const elementWidth = element.offsetWidth;
-      
-      const scrollPosition = elementOffsetLeft - (containerWidth / 2) + (elementWidth / 2);
-      
-      container.scrollTo({
-        left: scrollPosition,
-        behavior: 'smooth'
-      });
-    }
-  }, [activeCategory]);
-
   const scrollTabs = (direction: 'left' | 'right') => {
     if (scrollContainerRef.current) {
       const scrollAmount = 300;
@@ -78,43 +59,44 @@ export default function MenuSection() {
       >
         
         {/* Section Header with Menu Intro Image */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
-          <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-7 text-left space-y-4"
-          >
-            <span className="text-[11px] font-bold font-mono uppercase tracking-[0.2em] text-[#8B6B4D]">
-              The Digital Brew & Plates
-            </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-semibold text-[#2D241F] tracking-tight leading-[1.15]">
-              Something for<br />Every Craving.
-            </h2>
-            <p className="text-[#6A5A4D] text-base sm:text-lg font-normal leading-[1.8] max-w-xl">
-              Coffee, snacks and comfort food—all in one place.
-            </p>
-            <div className="h-[1px] w-12 bg-[#DDD2C2] my-6" />
-            <p className="text-sm text-[#6A5A4D]/85 font-normal leading-[1.8] max-w-xl">
-              Browse our dynamic digital menu featuring 18 curated categories. Use the interactive search and diet filters below to easily find exactly what you crave.
-            </p>
-          </motion.div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center mb-20 max-w-6xl mx-auto">
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-5 w-full"
+            className="lg:col-span-6 w-full order-2 lg:order-1"
           >
-            <div className="relative rounded-[20px] overflow-hidden shadow-[0_10px_30px_rgba(45,36,31,0.08)] border border-[#DDD2C2]/50 bg-[#FFFDF9] aspect-[4/3] group transition-shadow duration-500 hover:shadow-[0_20px_40px_rgba(45,36,31,0.12)]">
+            <div className="relative rounded-full overflow-hidden shadow-[0_12px_40px_rgba(45,36,31,0.08)] bg-[#F7F2EB] aspect-square group border-8 border-[#FFFDF9]">
               <img
                 src="/images/menu-intro.jpg"
                 alt="Snacks and Drinks at Mud Cups"
-                className="w-full h-full object-cover transition-all duration-700 ease-[0.22,1,0.36,1] group-hover:scale-105 group-hover:brightness-105 cursor-pointer"
+                className="w-full h-full object-cover transition-all duration-1000 ease-[0.22,1,0.36,1] group-hover:scale-105"
                 loading="lazy"
               />
             </div>
+          </motion.div>
+
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-6 text-left space-y-5 order-1 lg:order-2 lg:pl-10"
+          >
+            <span className="text-[11px] font-bold font-mono uppercase tracking-[0.2em] text-[#8B6B4D]">
+              The Digital Menu
+            </span>
+            <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-semibold text-[#2D241F] tracking-tight leading-[1.15]">
+              Something for<br />Every Craving.
+            </h2>
+            <div className="h-[1px] w-12 bg-[#DDD2C2] my-6" />
+            <p className="text-[#6A5A4D] text-base sm:text-lg font-normal leading-[1.8] max-w-xl">
+              From our famous chai to hearty momos and gourmet pasta.
+            </p>
+            <p className="text-sm text-[#6A5A4D] font-normal leading-[1.8] max-w-md pt-2">
+              Browse our dynamic digital menu featuring 18 curated categories. Use the interactive search and diet filters below to easily find exactly what you crave.
+            </p>
           </motion.div>
         </div>
 
@@ -148,6 +130,7 @@ export default function MenuSection() {
               
               {/* Veg Only Toggle */}
               <button
+                type="button"
                 onClick={() => setVegOnly(!vegOnly)}
                 className={`flex items-center space-x-2 px-5 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all duration-300 border ${
                   vegOnly 
@@ -163,6 +146,7 @@ export default function MenuSection() {
               {/* Reset Filters button */}
               {(searchQuery || vegOnly || activeCategory !== categories[0].id) && (
                 <button
+                  type="button"
                   onClick={() => {
                     setSearchQuery('');
                     setVegOnly(false);
@@ -179,21 +163,22 @@ export default function MenuSection() {
         </motion.div>
 
         {/* 18 Categories Horizontal Navigation Carousel */}
-        <div className="relative max-w-5xl mb-16" id="categories-carousel-outer">
+        <div className="relative max-w-5xl mb-20 mx-auto border-b border-[#DDD2C2]/40 pb-4" id="categories-carousel-outer">
           <div className="absolute inset-y-0 -left-4 z-20 flex items-center pointer-events-none">
             <button
+              type="button"
               onClick={() => scrollTabs('left')}
-              className="w-8 h-8 rounded-full bg-[#FFFDF9] hover:bg-[#F7F2EB] border border-[#DDD2C2] flex items-center justify-center text-[#6A5A4D] hover:text-[#2D241F] pointer-events-auto transition-colors shadow-[0_10px_30px_rgba(45,36,31,0.08)] cursor-pointer"
+              className="w-8 h-8 rounded-full bg-[#FFFDF9] hover:bg-[#F7F2EB] border border-[#DDD2C2] flex items-center justify-center text-[#6A5A4D] hover:text-[#2D241F] pointer-events-auto transition-colors shadow-[0_4px_12px_rgba(45,36,31,0.05)] cursor-pointer"
               aria-label="Scroll left"
             >
-              <ArrowLeft className="w-3.5 h-3.5 stroke-[2]" />
+              <ArrowLeft className="w-3.5 h-3.5 stroke-[1.5]" />
             </button>
           </div>
           
           {/* Scrollable Container */}
           <div
             ref={scrollContainerRef}
-            className="flex space-x-2.5 overflow-x-auto py-2 px-8 scrollbar-none select-none no-scrollbar"
+            className="flex space-x-10 overflow-x-auto px-8 scrollbar-none select-none no-scrollbar"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             {/* 18 Category tabs */}
@@ -202,35 +187,27 @@ export default function MenuSection() {
               return (
                 <motion.button
                   key={cat.id}
+                  type="button"
                   ref={isActive ? activeCategoryRef : null}
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.05, ease: [0.22, 1, 0.36, 1] }}
+                  transition={{ duration: 0.5, delay: index * 0.02, ease: [0.22, 1, 0.36, 1] }}
                   onClick={() => setActiveCategory(cat.id)}
-                  className={`relative flex items-center space-x-2.5 px-4 py-2.5 rounded-full text-[11px] font-bold uppercase tracking-widest transition-all duration-300 cursor-pointer shrink-0 border ${
+                  className={`relative pb-4 text-[11px] font-bold uppercase tracking-[0.2em] transition-all duration-300 cursor-pointer shrink-0 ${
                     isActive
-                      ? 'border-[#8B6B4D] text-[#FFFDF9] scale-105'
-                      : 'bg-[#FFFDF9] border-[#DDD2C2] text-[#6A5A4D] hover:text-[#2D241F] hover:border-[#2D241F]/30 opacity-70 hover:opacity-100'
+                      ? 'text-[#2D241F]'
+                      : 'text-[#6A5A4D] hover:text-[#2D241F]'
                   }`}
                 >
+                  <span className="relative z-10">{cat.name}</span>
                   {isActive && (
                     <motion.div
                       layoutId="active-category"
-                      className="absolute inset-0 bg-[#8B6B4D] rounded-full shadow-[0_4px_12px_rgba(139,107,77,0.15)]"
+                      className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#8B6B4D]"
                       transition={{ type: "spring", stiffness: 400, damping: 30 }}
                     />
                   )}
-                  <div
-                    className={`relative z-10 w-4 h-4 rounded-full flex items-center justify-center text-[8px] font-extrabold font-mono shrink-0 transition-colors ${
-                      isActive 
-                        ? 'bg-[#F7F2EB] text-[#8B6B4D]' 
-                        : 'bg-[#8B6B4D]/10 text-[#8B6B4D]'
-                    }`}
-                  >
-                    {cat.name.charAt(0)}
-                  </div>
-                  <span className="relative z-10">{cat.name}</span>
                 </motion.button>
               );
             })}
@@ -238,89 +215,101 @@ export default function MenuSection() {
 
           <div className="absolute inset-y-0 -right-4 z-20 flex items-center pointer-events-none">
             <button
+              type="button"
               onClick={() => scrollTabs('right')}
-              className="w-8 h-8 rounded-full bg-[#FFFDF9] hover:bg-[#F7F2EB] border border-[#DDD2C2] flex items-center justify-center text-[#6A5A4D] hover:text-[#2D241F] pointer-events-auto transition-colors shadow-[0_10px_30px_rgba(45,36,31,0.08)] cursor-pointer"
+              className="w-8 h-8 rounded-full bg-[#FFFDF9] hover:bg-[#F7F2EB] border border-[#DDD2C2] flex items-center justify-center text-[#6A5A4D] hover:text-[#2D241F] pointer-events-auto transition-colors shadow-[0_4px_12px_rgba(45,36,31,0.05)] cursor-pointer"
               aria-label="Scroll right"
             >
-              <ArrowRight className="w-3.5 h-3.5 stroke-[2]" />
+              <ArrowRight className="w-3.5 h-3.5 stroke-[1.5]" />
             </button>
           </div>
         </div>
 
         {/* Menu Listings Container */}
-        <div className="max-w-5xl space-y-12">
-          <AnimatePresence mode="wait">
+        <div className="max-w-4xl mx-auto space-y-16" style={{ minHeight: '600px' }}>
           {filteredMenu.length > 0 ? (
               filteredMenu.map((cat) => (
               <motion.div
-                key={cat.id}
+                key="menu-category-wrapper"
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                className="bg-[#FFFDF9] rounded-[2rem] border border-[#DDD2C2]/50 p-6 sm:p-10 shadow-[0_10px_30px_rgba(45,36,31,0.08)] relative overflow-hidden"
+                className="relative"
               >
                 {/* Category Header */}
-                <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-8 border-b border-[#DDD2C2]/40 mb-10">
-                  <div className="flex items-center space-x-5">
-                    <div className="w-14 h-14 rounded-full flex items-center justify-center bg-[#F7F2EB] border border-[#DDD2C2] text-[#8B6B4D] text-xl font-semibold font-mono shrink-0 select-none">
-                      {cat.name.charAt(0)}
-                    </div>
-                    <div className="text-left">
-                      <h3 className="text-2xl sm:text-3xl font-semibold text-[#2D241F] tracking-tight">
-                        {cat.name}
-                      </h3>
-                      <p className="text-[11px] font-mono text-[#8B6B4D] uppercase tracking-widest mt-1">
-                        {cat.items.length} Specialties
-                      </p>
-                    </div>
-                  </div>
-                  <span className="text-[10px] font-mono text-[#6A5A4D] bg-[#F7F2EB] px-4 py-1.5 rounded-full border border-[#DDD2C2]/40">
-                    Mud Cups Bengaluru
-                  </span>
+                <div className="text-center mb-16">
+                  <h3 className="text-3xl sm:text-4xl font-semibold text-[#2D241F] tracking-tight">
+                    {cat.name}
+                  </h3>
+                  <div className="h-[1px] w-12 bg-[#8B6B4D]/30 mx-auto mt-6" />
                 </div>
 
-                {/* Menu Items Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-x-12 gap-y-10">
+                {/* Menu Items Grid - Boutique List Style */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-12">
                   {cat.items.map((item, index) => (
                     <motion.div
                       key={item.id}
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.3, delay: index * 0.05, ease: [0.22, 1, 0.36, 1] }}
-                      className="group flex flex-col justify-between p-4 -m-4 rounded-xl hover:bg-[#F7F2EB] transition-colors duration-300"
+                      className="group flex flex-col transition-colors duration-300"
                     >
                       {/* Title & Price */}
-                      <div className="flex items-start justify-between space-x-6">
-                        <div className="text-left flex-1">
-                          <div className="flex items-center space-x-3 flex-wrap">
-                            {/* Simple minimalist Veg indicator */}
-                            <span
-                              className={`w-3 h-3 flex items-center justify-center shrink-0 ${
-                                item.isVeg
-                                  ? 'text-emerald-600'
-                                  : 'text-red-600'
-                              }`}
-                              title={item.isVeg ? 'Vegetarian' : 'Non-Vegetarian'}
-                            >
-                              <span className="w-1.5 h-1.5 rounded-full bg-current opacity-80" />
+                      <div className="flex items-baseline justify-between w-full">
+                        <div className="flex items-center space-x-3 shrink-0">
+                          {/* Simple minimalist Veg indicator */}
+                          <span
+                            className={`w-3 h-3 flex items-center justify-center shrink-0 ${
+                              item.isVeg
+                                ? 'text-emerald-600'
+                                : 'text-red-600'
+                            }`}
+                            title={item.isVeg ? 'Vegetarian' : 'Non-Vegetarian'}
+                          >
+                            <span className="w-1.5 h-1.5 rounded-full bg-current opacity-80" />
+                          </span>
+                          <span className="text-base sm:text-lg font-semibold text-[#2D241F] group-hover:text-[#8B6B4D] transition-colors leading-tight">
+                            {item.name}
+                          </span>
+                        </div>
+                        
+                        {/* Dotted Line */}
+                        <div className="flex-1 border-b-[1.5px] border-dotted border-[#DDD2C2]/80 mx-4 relative -top-1.5 transition-colors group-hover:border-[#8B6B4D]/30" />
+
+                        {/* Elegant Price Tag */}
+                        <div className="shrink-0 text-right flex items-center space-x-3">
+                          {(item.priceR !== undefined || item.priceL !== undefined) ? (
+                            <>
+                              <div className="flex flex-col items-center min-w-[32px]">
+                                <span className="text-[10px] text-[#8B6B4D] font-mono tracking-widest font-bold uppercase leading-none mb-1">R</span>
+                                <span className="text-base sm:text-lg font-semibold text-[#2D241F] font-sans leading-none">
+                                  {item.priceR ? `₹${item.priceR}` : '-'}
+                                </span>
+                              </div>
+                              <div className="w-[1px] h-6 bg-[#DDD2C2]"></div>
+                              <div className="flex flex-col items-center min-w-[32px]">
+                                <span className="text-[10px] text-[#8B6B4D] font-mono tracking-widest font-bold uppercase leading-none mb-1">L</span>
+                                <span className="text-base sm:text-lg font-semibold text-[#2D241F] font-sans leading-none">
+                                  {item.priceL ? `₹${item.priceL}` : '-'}
+                                </span>
+                              </div>
+                            </>
+                          ) : (
+                            <span className="text-base sm:text-lg font-semibold text-[#2D241F] font-sans transition-colors duration-300">
+                              ₹{item.price}
                             </span>
-                            <span className="text-base font-semibold text-[#2D241F] group-hover:text-[#8B6B4D] transition-colors leading-tight">
-                              {item.name}
-                            </span>
-                          </div>
-                          <p className="text-sm text-[#6A5A4D] mt-2 font-normal leading-[1.6]">
+                          )}
+                        </div>
+                      </div>
+                      
+                      {/* Description */}
+                      {item.description && (
+                        <div className="pl-6 mt-2">
+                          <p className="text-sm text-[#6A5A4D] font-normal leading-[1.6]">
                             {item.description}
                           </p>
                         </div>
-                        
-                        {/* Elegant Price Tag */}
-                        <div className="shrink-0 text-right pt-0.5">
-                          <span className="text-base font-semibold text-[#2D241F] font-sans group-hover:text-[#8B6B4D] transition-colors duration-300">
-                            ₹{item.price}
-                          </span>
-                        </div>
-                      </div>
+                      )}
                     </motion.div>
                   ))}
                 </div>
@@ -330,11 +319,11 @@ export default function MenuSection() {
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
               className="bg-[#FFFDF9] border border-[#DDD2C2]/60 rounded-3xl p-16 text-center"
             >
               <p className="text-[#6A5A4D] text-sm font-light">No menu items match your criteria.</p>
               <button
+                type="button"
                 onClick={() => {
                   setSearchQuery('');
                   setVegOnly(false);
@@ -347,7 +336,6 @@ export default function MenuSection() {
               </button>
             </motion.div>
           )}
-          </AnimatePresence>
         </div>
       </motion.div>
     </section>

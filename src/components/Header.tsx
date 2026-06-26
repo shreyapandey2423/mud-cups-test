@@ -118,8 +118,8 @@ export default function Header({ isIntroPlaying = false }: HeaderProps) {
           </button>
  
           {/* Minimal, Thin Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-10">
-            <nav className="flex items-center space-x-10">
+          <div className="hidden md:flex items-center space-x-12">
+            <nav className="flex items-center space-x-12">
               {[
                 { label: 'Menu', id: 'menu' },
                 { label: 'Visit Us', id: 'location' },
@@ -128,13 +128,14 @@ export default function Header({ isIntroPlaying = false }: HeaderProps) {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className="text-xs font-semibold uppercase tracking-[0.15em] transition-colors duration-300 cursor-pointer relative py-1 group text-[#6A5A4D] hover:text-[#2D241F]"
+                  className="text-[11px] font-semibold uppercase tracking-[0.2em] transition-colors duration-300 cursor-pointer relative py-1 group text-[#6A5A4D] hover:text-[#2D241F]"
                 >
                   {item.label}
-                  <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[#8B6B4D] transition-all duration-300 group-hover:w-full" />
+                  <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-[#8B6B4D] transition-all duration-300 ease-[0.22,1,0.36,1] group-hover:w-full" />
                 </button>
               ))}
             </nav>
+            <div className="w-[1px] h-4 bg-[#DDD2C2]/60" />
             <a
               href="https://www.instagram.com/mud_cups_ananthnagar/"
               target="_blank"

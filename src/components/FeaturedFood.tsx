@@ -29,17 +29,20 @@ export default function FeaturedFood() {
           </motion.div>
  
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-10%" }}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="w-full lg:w-7/12 lg:pl-10"
+            className="w-full lg:w-7/12 relative"
           >
-            <div className="relative rounded-2xl overflow-hidden shadow-[0_8px_24px_rgba(45,36,31,0.06)] bg-[#F7F2EB] aspect-[4/3] group transition-shadow duration-500 hover:shadow-[0_12px_32px_rgba(45,36,31,0.08)]">
+            {/* Decorative Offset Frame */}
+            <div className="hidden lg:block absolute -top-8 -left-8 w-full h-full border border-[#DDD2C2] rounded-2xl pointer-events-none" />
+            
+            <div className="relative rounded-2xl overflow-hidden shadow-[0_12px_40px_rgba(45,36,31,0.08)] bg-[#F7F2EB] aspect-[4/5] sm:aspect-[3/4] group z-10">
               <img
                 src="/images/featured-food.jpg"
                 alt="Fresh Food & Drinks at Mud Cups"
-                className="w-full h-full object-cover transition-all duration-1000 ease-[0.22,1,0.36,1] group-hover:scale-[1.03] cursor-pointer"
+                className="w-full h-full object-cover transition-all duration-1000 ease-[0.22,1,0.36,1] group-hover:scale-[1.03]"
                 loading="lazy"
               />
             </div>

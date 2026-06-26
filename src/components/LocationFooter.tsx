@@ -1,240 +1,205 @@
 import { MapPin, Clock, ExternalLink, Instagram } from 'lucide-react';
 import MudCupsLogo from './MudCupsLogo';
+import { motion } from 'framer-motion';
 
 export default function LocationFooter() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#EFE6D8] border-t border-[#DDD2C2]/80 text-[#2D241F] font-sans">
+    <footer className="bg-[#EFE6D8] border-t border-[#DDD2C2]/50 text-[#2D241F] font-sans overflow-hidden">
       
-      {/* 1. Location Section */}
-      <section id="location" className="py-20 lg:py-28 relative">
+      {/* 1. Contact / Destination Section */}
+      <section id="location" className="py-24 lg:py-32 relative">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start max-w-6xl mx-auto">
             
-            {/* Location Details Column */}
-            <div className="lg:col-span-5 text-left space-y-8">
-              <div className="space-y-4">
+            {/* Left Column: Invitation & Details */}
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              className="lg:col-span-5 space-y-16"
+            >
+              {/* Heading & Intro */}
+              <div className="space-y-6">
                 <span className="text-[11px] font-bold font-mono uppercase tracking-[0.2em] text-[#8B6B4D]">
-                  Find Us
+                  Visit Us
                 </span>
-                <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-semibold text-[#2D241F] tracking-tight leading-[1.15]">
-                  The Bangalore Space
+                <h2 className="text-4xl sm:text-5xl lg:text-[56px] font-semibold text-[#2D241F] tracking-tight leading-[1.1]">
+                  The Bangalore<br />Space.
                 </h2>
-                <div className="h-[1px] w-12 bg-[#DDD2C2] my-6" />
-                <p className="text-[#6A5A4D] text-base font-normal leading-[1.8]">
-                  Visit our quiet, warm, Scandinavian-inspired café environment. Slow down with aromatic clay cup chai and premium dining options.
+                <p className="text-[#6A5A4D] text-lg font-normal leading-[1.8] max-w-md pt-2">
+                  Step into our quiet, warm, Scandinavian-inspired café environment. Slow down with aromatic clay cup chai and premium dining options.
                 </p>
               </div>
 
-              {/* Exact Address block */}
-              <div className="space-y-8 pt-4">
-                <div className="flex items-start space-x-4">
-                  <MapPin className="w-5 h-5 text-[#8B6B4D] shrink-0 mt-0.5" />
+              {/* Elegant Contact Details */}
+              <div className="space-y-10">
+                <div className="flex items-start space-x-6">
+                  <Clock className="w-5 h-5 text-[#8B6B4D] shrink-0 mt-1" />
                   <div>
-                    <h4 className="text-xs font-bold uppercase text-[#2D241F] tracking-widest font-mono">
-                      Location Address
-                    </h4>
-                    <p className="text-sm text-[#6A5A4D] font-normal mt-1.5 leading-[1.8]">
-                      Survey 61/14, Kammasandra,<br />
-                      Near Jockey Showroom,<br />
-                      Ananthnagar Main Road,<br />
-                      Electronic City, Bangalore,<br />
-                      Karnataka 560100
-                    </p>
-                  </div>
-                </div>
-
-                {/* Opening Hours */}
-                <div className="flex items-start space-x-4">
-                  <Clock className="w-5 h-5 text-[#8B6B4D] shrink-0 mt-0.5" />
-                  <div>
-                    <h4 className="text-xs font-bold uppercase text-[#2D241F] tracking-widest font-mono">
+                    <h4 className="text-xs font-bold uppercase text-[#2D241F] tracking-[0.2em] font-mono mb-2">
                       Opening Hours
                     </h4>
-                    <p className="text-sm text-[#6A5A4D] font-normal mt-1.5 leading-[1.8]">
+                    <p className="text-base text-[#6A5A4D] font-normal leading-[1.8]">
                       Monday – Sunday<br />
                       11:00 AM – 11:00 PM
                     </p>
                   </div>
                 </div>
 
-                {/* Stay Connected */}
-                <div className="flex items-start space-x-4">
-                  <Instagram className="w-5 h-5 text-[#8B6B4D] shrink-0 mt-0.5" />
+                <div className="flex items-start space-x-6">
+                  <Instagram className="w-5 h-5 text-[#8B6B4D] shrink-0 mt-1" />
                   <div>
-                    <h4 className="text-xs font-bold uppercase text-[#2D241F] tracking-widest font-mono">
-                      Stay Connected
+                    <h4 className="text-xs font-bold uppercase text-[#2D241F] tracking-[0.2em] font-mono mb-2">
+                      Instagram
                     </h4>
-                    <a
-                      href="https://www.instagram.com/mud_cups_ananthnagar/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block text-sm font-normal text-[#6A5A4D] hover:text-[#8B6B4D] transition-colors mt-1.5 leading-[1.8]"
-                    >
-                      Instagram • @mud_cups_ananthnagar
+                    <a href="https://www.instagram.com/mud_cups_ananthnagar/" target="_blank" rel="noopener noreferrer" className="text-base text-[#6A5A4D] hover:text-[#2D241F] font-normal transition-colors">
+                      @mud_cups_ananthnagar
                     </a>
                   </div>
                 </div>
               </div>
 
-              {/* Explicit Actions: Directions, Open Maps, Call Cafe */}
-              <div className="flex flex-wrap gap-4 pt-6" id="location-actions">
-                <a
-                  href="https://www.google.com/maps/dir/?api=1&destination=Mud+Cups+-+Ananthnagar"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center space-x-2 px-6 py-3.5 bg-[#2D241F] text-[#FFFDF9] hover:bg-[#3D312A] text-[11px] font-bold uppercase tracking-[0.2em] rounded-full transition-all duration-300 shadow-[0_4px_12px_rgba(45,36,31,0.1)] hover:shadow-[0_8px_20px_rgba(45,36,31,0.15)] active:scale-[0.98]"
-                  id="btn-get-directions"
-                >
-                  <span>Get Directions</span>
-                  <ExternalLink className="w-3.5 h-3.5" />
-                </a>
-                <a
-                  href="https://www.google.com/maps/place/Mud+Cups+-+Ananthnagar/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center space-x-2 px-6 py-3.5 bg-[#FFFDF9] border border-[#DDD2C2] text-[#2D241F] hover:bg-[#F7F2EB] text-[11px] font-bold uppercase tracking-[0.2em] rounded-full transition-all duration-300 active:scale-[0.98]"
-                  id="btn-open-maps"
-                >
-                  <span>Open in Maps</span>
-                  <ExternalLink className="w-3.5 h-3.5" />
-                </a>
+              {/* Entrance Image - Offset Portrait Layout */}
+              <div className="relative overflow-hidden shadow-[0_12px_40px_rgba(45,36,31,0.06)] bg-[#F7F2EB] aspect-[4/5] max-w-[280px] rounded-2xl group hidden lg:block -ml-8 mt-12">
+                <img
+                  src="/images/location.jpg"
+                  alt="Mud Cups Main Entrance"
+                  className="w-full h-full object-cover transition-transform duration-1000 ease-[0.22,1,0.36,1] group-hover:scale-105"
+                  loading="lazy"
+                />
               </div>
-            </div>
+            </motion.div>
 
-            {/* Premium Maps Column */}
-            <div className="lg:col-span-7 w-full space-y-10 lg:pl-10">
-              {/* Entrance Image Card */}
-              <div className="space-y-4">
-                <div className="text-left">
-                  <h3 className="text-2xl sm:text-3xl font-semibold text-[#2D241F] tracking-tight leading-[1.15]">
-                    Visit Mud Cups.
-                  </h3>
-                  <p className="text-[#6A5A4D] text-sm font-normal leading-[1.8]">
-                    Easy to find. Hard to forget.
-                  </p>
-                </div>
-                <div className="relative rounded-[20px] overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.03)] border border-[#DDD2C2]/50 bg-[#FFFDF9] aspect-[16/10] group">
-                  <img
-                    src="/images/location.jpg"
-                    alt="Mud Cups Main Entrance"
-                    className="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-103 cursor-pointer"
-                    loading="lazy"
-                  />
-                </div>
-              </div>
-
-              {/* Map Card */}
-              <div
-                className="w-full h-[280px] sm:h-[320px] rounded-[20px] overflow-hidden border border-[#DDD2C2]/60 relative bg-[#FFFDF9] shadow-[0_8px_30px_rgba(0,0,0,0.01)] group"
-                id="map-container-footer"
-              >
-                {/* Embed map for: Mud Cups - Ananthnagar, Bangalore */}
+            {/* Right Column: Premium Map & Info Card */}
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              className="lg:col-span-7 space-y-8"
+            >
+              {/* Floating Map Card */}
+              <div className="w-full aspect-square sm:aspect-[4/3] rounded-[2.5rem] overflow-hidden border border-[#DDD2C2]/50 bg-[#FFFDF9] shadow-[0_16px_48px_rgba(45,36,31,0.06)] relative group">
                 <iframe
                   title="Mud Cups Cafe Location, Bangalore"
                   src="https://maps.google.com/maps?q=Mud%20Cups%20-%20Ananthnagar,%20Survey%2061/14,%20Kammasandra,%20Near%20Jockey%20Showroom,%20Ananthnagar%20Main%20Road,%20Electronic%20City,%20Bangalore,%20Karnataka%20560100&t=&z=16&ie=UTF8&iwloc=&output=embed"
-                  className="w-full h-full border-0 grayscale opacity-95 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
+                  className="w-full h-full border-0 grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 ease-[0.22,1,0.36,1]"
                   allowFullScreen={false}
                   loading="lazy"
                   referrerPolicy="no-referrer"
                 />
               </div>
-            </div>
 
-          </div>
-        </div>
-      </section>
+              {/* Refined Information Card */}
+              <div className="bg-[#FFFDF9] border border-[#DDD2C2]/40 p-8 sm:p-12 rounded-[2.5rem] shadow-[0_4px_24px_rgba(45,36,31,0.04)]">
+                <div className="flex items-start space-x-5 mb-10">
+                  <MapPin className="w-6 h-6 text-[#8B6B4D] shrink-0 mt-1" />
+                  <div>
+                    <h4 className="text-xl font-semibold text-[#2D241F] mb-3 tracking-tight">
+                      Mud Cups, Electronic City
+                    </h4>
+                    <p className="text-base text-[#6A5A4D] font-normal leading-[1.8] max-w-md">
+                      Survey 61/14, Kammasandra,<br />
+                      Near Jockey Showroom, Ananthnagar Main Road,<br />
+                      Electronic City, Bangalore, Karnataka 560100
+                    </p>
+                  </div>
+                </div>
 
-      {/* Instagram CTA Card */}
-      <section className="bg-[#EFE6D8] pb-16">
-        <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="bg-[#FFFDF9] border border-[#DDD2C2]/50 rounded-[2rem] p-12 sm:p-16 text-center space-y-8 shadow-[0_4px_24px_rgba(45,36,31,0.04)] relative overflow-hidden group">
-            <div className="absolute top-0 left-0 w-full h-1 bg-[#8B6B4D]" />
-            <div className="flex justify-center">
-              <div className="p-4 bg-[#F7F2EB] rounded-full text-[#8B6B4D]">
-                <Instagram className="w-8 h-8 stroke-[1.5]" />
+                <div className="flex flex-wrap gap-4 pt-8 border-t border-[#DDD2C2]/40">
+                  <a
+                    href="https://www.google.com/maps/dir/?api=1&destination=Mud+Cups+-+Ananthnagar"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center space-x-3 px-8 py-4 bg-[#2D241F] text-[#FFFDF9] hover:bg-[#3D312A] text-[11px] font-bold uppercase tracking-[0.2em] rounded-full transition-all duration-300 shadow-[0_4px_12px_rgba(45,36,31,0.1)] hover:shadow-[0_8px_20px_rgba(45,36,31,0.15)] active:scale-[0.98] w-full sm:w-auto"
+                  >
+                    <span>Get Directions</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                  <a
+                    href="https://www.instagram.com/mud_cups_ananthnagar/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center space-x-3 px-8 py-4 bg-[#FFFDF9] border border-[#DDD2C2]/60 text-[#2D241F] hover:bg-[#F7F2EB] hover:border-[#DDD2C2] text-[11px] font-bold uppercase tracking-[0.2em] rounded-full transition-all duration-300 active:scale-[0.98] w-full sm:w-auto"
+                  >
+                    <Instagram className="w-3.5 h-3.5" />
+                    <span>Instagram</span>
+                  </a>
+                </div>
               </div>
-            </div>
-            <div className="space-y-4 max-w-xl mx-auto">
-              <h3 className="text-2xl sm:text-3xl font-semibold text-[#2D241F] tracking-tight">
-                Follow Our Journey
-              </h3>
-              <p className="text-sm sm:text-base text-[#6A5A4D] font-normal leading-[1.8]">
-                Fresh brews, new menu launches, café moments and behind-the-scenes updates.
-              </p>
-            </div>
-            <div className="pt-4">
-              <a
-                href="https://www.instagram.com/mud_cups_ananthnagar/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center space-x-2 px-9 py-4 bg-[#2D241F] hover:bg-[#3D312A] text-[#FFFDF9] text-[11px] font-bold uppercase tracking-[0.2em] rounded-full transition-all duration-300 shadow-[0_4px_12px_rgba(45,36,31,0.1)] hover:shadow-[0_8px_20px_rgba(45,36,31,0.15)] active:scale-[0.98] cursor-pointer"
-              >
-                <span>Follow on Instagram</span>
-              </a>
-            </div>
+            </motion.div>
+
+            {/* Mobile Entrance Image */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              className="lg:hidden w-full relative overflow-hidden shadow-[0_8px_32px_rgba(45,36,31,0.06)] bg-[#F7F2EB] aspect-[4/3] rounded-2xl group mt-8"
+            >
+              <img
+                src="/images/location.jpg"
+                alt="Mud Cups Main Entrance"
+                className="w-full h-full object-cover transition-transform duration-1000 ease-[0.22,1,0.36,1] group-hover:scale-105"
+                loading="lazy"
+              />
+            </motion.div>
+
           </div>
         </div>
       </section>
 
-      {/* 2. Minimal Footer (Under "Contact" scroll hook) */}
+      {/* 2. Minimal Redesigned Footer */}
       <div
         id="contact"
-        className="border-t border-[#DDD2C2]/60 py-12 bg-[#F7F2EB]"
+        className="border-t border-[#DDD2C2]/40 pt-16 pb-12 bg-[#F7F2EB]"
       >
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-12">
           
           {/* Footer Logo & Brand info */}
-          <div className="flex items-center space-x-3.5 text-left">
-            <MudCupsLogo size={42} />
-            <div className="space-y-1">
-              <span className="text-base font-black tracking-[0.2em] text-[#2D241F] uppercase block font-sans">
-                MUD CUPS
-              </span>
-              <span className="text-[10px] font-medium text-[#6A5A4D] tracking-[0.1em] block font-mono">
-                REVOKING TRADITIONAL TASTE
-              </span>
+          <div className="space-y-8 max-w-sm">
+            <div className="flex items-center space-x-5">
+              <MudCupsLogo size={52} />
+              <div>
+                <span className="text-2xl font-semibold tracking-tight text-[#2D241F] block font-sans">
+                  Mud Cups
+                </span>
+                <span className="text-[10px] font-bold text-[#8B6B4D] tracking-[0.2em] uppercase block font-mono mt-1">
+                  Revoking Traditional Taste
+                </span>
+              </div>
             </div>
+            <p className="text-sm text-[#6A5A4D] font-normal leading-[1.8]">
+              Where smoky Tandoori Chai meets chilled conversations and cozy vibes. Handcrafted with love in Electronic City, Bangalore.
+            </p>
           </div>
 
-          {/* Follow Us Section */}
-          <a
-            href="https://www.instagram.com/mud_cups_ananthnagar/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex flex-col text-left group bg-[#EFE6D8]/40 hover:bg-[#EFE6D8]/80 border border-[#DDD2C2] p-4 rounded-xl transition-all duration-300"
-          >
-            <span className="text-[10px] font-bold uppercase text-[#2D241F] tracking-widest font-mono">
-              Follow Us
-            </span>
-            <div className="flex items-center space-x-2 mt-1">
-              <Instagram className="w-4 h-4 text-[#8B6B4D]" />
-              <span className="text-xs font-bold text-[#2D241F]">Instagram</span>
-              <span className="text-xs text-[#6A5A4D] group-hover:text-[#8B6B4D] transition-colors">@mud_cups_ananthnagar</span>
-            </div>
-          </a>
-
-          {/* Socials / Direct Link */}
-          <div className="flex items-center space-x-6">
-            <a
-              href="https://maps.google.com/?q=Survey+61/14,+Kammasandra,+Near+Jockey+Showroom,+Ananthnagar+Main+Road,+Electronic+City,+Bangalore"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#6A5A4D] hover:text-[#8B6B4D] transition-colors flex items-center space-x-2 text-[11px] font-bold uppercase tracking-widest"
-              id="footer-maps-link"
-            >
-              <span>Google Maps</span>
-            </a>
+          <div className="flex flex-col items-start md:items-end space-y-8 md:space-y-12">
+            {/* Minimal Links */}
+            <nav className="flex flex-wrap gap-8">
+               <a href="#menu" className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#2D241F] hover:text-[#8B6B4D] transition-colors relative group">
+                 Menu
+                 <span className="absolute -bottom-1.5 left-0 w-0 h-[1px] bg-[#8B6B4D] transition-all duration-300 ease-[0.22,1,0.36,1] group-hover:w-full" />
+               </a>
+               <a href="#location" className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#2D241F] hover:text-[#8B6B4D] transition-colors relative group">
+                 Visit Us
+                 <span className="absolute -bottom-1.5 left-0 w-0 h-[1px] bg-[#8B6B4D] transition-all duration-300 ease-[0.22,1,0.36,1] group-hover:w-full" />
+               </a>
+               <a href="https://www.instagram.com/mud_cups_ananthnagar/" target="_blank" rel="noopener noreferrer" className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#2D241F] hover:text-[#8B6B4D] transition-colors relative group">
+                 Instagram
+                 <span className="absolute -bottom-1.5 left-0 w-0 h-[1px] bg-[#8B6B4D] transition-all duration-300 ease-[0.22,1,0.36,1] group-hover:w-full" />
+               </a>
+            </nav>
+            {/* Minimal Copyright */}
+            <p className="text-[10px] text-[#6A5A4D] font-mono tracking-widest uppercase">
+              © {currentYear} Mud Cups. All Rights Reserved.
+            </p>
           </div>
-
-          {/* Minimal Copyright */}
-          <p className="text-[11px] text-[#6A5A4D] font-light">
-            © {currentYear} Mud Cups. All Rights Reserved.
-          </p>
         </div>
       </div>
-
     </footer>
   );
 }

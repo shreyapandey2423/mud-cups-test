@@ -206,96 +206,131 @@ export default function Testimonials() {
           </p>
         </motion.div>
 
-        {/* Reviews Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl">
-          {reviews.map((review, index) => {
-            const isExpanded = expandedReviews[index];
-            const originalText = review.text;
-            const isLongText = originalText.length > 110;
-            const displayText = isLongText && !isExpanded 
-              ? `${originalText.slice(0, 110)}...` 
-              : originalText;
-
+        {/* Reviews Container */}
+        <div className="max-w-5xl mx-auto">
+          {/* Featured First Review */}
+          {reviews.length > 0 && (() => {
+            const featuredReview = reviews[0];
             return (
               <motion.div 
-                key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-10%" }}
-                transition={{ duration: 0.8, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                className="bg-[#FFFDF9] border border-[#DDD2C2]/30 p-8 sm:p-10 rounded-[2rem] flex flex-col justify-between space-y-8 shadow-[0_4px_24px_rgba(45,36,31,0.04)] transition-all duration-300"
+                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                className="mb-20 text-center"
               >
-                <div className="space-y-6">
-                  
-                  {/* Top: Customer & Google Verification Badge */}
-                  <div className="flex items-center justify-between pb-4 border-b border-[#DDD2C2]/30">
-                    <div className="flex items-center space-x-3.5">
-                      {review.profile_photo_url ? (
-                        <img 
-                          src={review.profile_photo_url} 
-                          alt={review.author_name} 
-                          className="w-10 h-10 rounded-full object-cover border border-gray-100"
-                          referrerPolicy="no-referrer"
-                        />
-                      ) : (
-                        <div className="w-10 h-10 rounded-full bg-[#8B6B4D]/10 text-[#8B6B4D] flex items-center justify-center font-bold text-sm border border-[#8B6B4D]/20">
-                          {review.author_name.charAt(0)}
-                        </div>
-                      )}
-                      <div className="text-left">
-                        <div className="flex items-center space-x-1.5">
-                          <h4 className="text-sm font-extrabold text-[#2D241F] leading-tight">
-                            {review.author_name}
-                          </h4>
-                          <span className="text-emerald-600 inline-flex" title="Google Verified Local Guide">
-                            <CheckCircle className="w-3.5 h-3.5 fill-emerald-50 text-emerald-600" />
-                          </span>
-                        </div>
-                        <span className="text-[10px] text-[#6A5A4D] font-mono tracking-wider block mt-0.5">
-                          {review.relative_time_description}
-                        </span>
-                      </div>
+                <div className="flex justify-center mb-8 space-x-1">
+                  {renderStars(featuredReview.rating)}
+                </div>
+                <div className="relative inline-block">
+                  <Quote className="w-12 h-12 text-[#DDD2C2]/40 absolute -top-6 -left-8 -z-1" />
+                  <h3 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-[#2D241F] leading-[1.4] tracking-tight max-w-4xl mx-auto relative z-10">
+                    "{featuredReview.text}"
+                  </h3>
+                </div>
+                
+                <div className="mt-10 flex items-center justify-center space-x-4">
+                  {featuredReview.profile_photo_url ? (
+                    <img 
+                      src={featuredReview.profile_photo_url} 
+                      alt={featuredReview.author_name} 
+                      className="w-12 h-12 rounded-full object-cover border border-[#DDD2C2]"
+                      referrerPolicy="no-referrer"
+                    />
+                  ) : (
+                    <div className="w-12 h-12 rounded-full bg-[#F7F2EB] text-[#8B6B4D] flex items-center justify-center font-semibold text-base border border-[#DDD2C2]">
+                      {featuredReview.author_name.charAt(0)}
                     </div>
-
-                    {/* Google Maps Logo source */}
-                    <a 
-                      href="https://www.google.com/maps/place/Mud+Cups+-+Ananthnagar/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-7 h-7 bg-[#F7F2EB] hover:bg-[#DDD2C2]/50 border border-[#DDD2C2]/60 rounded-full flex items-center justify-center text-gray-500 hover:text-[#2D241F] transition-colors"
-                      title="View original review on Google Maps"
-                    >
-                      <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-current">
-                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                      </svg>
-                    </a>
+                  )}
+                  <div className="text-left">
+                    <div className="flex items-center space-x-1.5">
+                      <h4 className="text-base font-semibold text-[#2D241F] leading-tight">
+                        {featuredReview.author_name}
+                      </h4>
+                      <span className="text-emerald-600 inline-flex" title="Google Verified Local Guide">
+                        <CheckCircle className="w-3.5 h-3.5 fill-emerald-50 text-emerald-600" />
+                      </span>
+                    </div>
+                    <span className="text-xs text-[#6A5A4D] font-mono tracking-widest block mt-1 uppercase">
+                      {featuredReview.relative_time_description}
+                    </span>
                   </div>
-
-                  {/* Stars Rating */}
-                  <div className="flex items-center space-x-1">
-                    {renderStars(review.rating)}
-                  </div>
-
-                  {/* Review Text */}
-                  <div className="text-left relative">
-                    <Quote className="w-8 h-8 text-[#DDD2C2]/40 absolute -top-4 -left-2 -z-1" />
-                    <p className="text-sm text-[#6A5A4D] font-normal leading-[1.8] pl-4 relative z-10">
-                      "{displayText}"
-                      {isLongText && (
-                        <button
-                          onClick={() => toggleExpand(index)}
-                          className="text-[#8B6B4D] hover:text-[#2D241F] ml-1.5 font-bold uppercase tracking-wider text-[10px] hover:underline cursor-pointer"
-                        >
-                          {isExpanded ? 'Show Less' : 'Read More'}
-                        </button>
-                      )}
-                    </p>
-                  </div>
-
                 </div>
               </motion.div>
             );
-          })}
+          })()}
+
+          {/* Remaining Reviews Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
+            {reviews.slice(1).map((review, i) => {
+              const index = i + 1; // original index
+              const isExpanded = expandedReviews[index];
+              const originalText = review.text;
+              const isLongText = originalText.length > 110;
+              const displayText = isLongText && !isExpanded 
+                ? `${originalText.slice(0, 110)}...` 
+                : originalText;
+
+              return (
+                <motion.div 
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-10%" }}
+                  transition={{ duration: 0.8, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                  className="bg-[#FFFDF9] border border-[#DDD2C2]/40 p-8 rounded-[2rem] flex flex-col justify-between space-y-8 transition-colors duration-300 hover:border-[#DDD2C2]"
+                >
+                  <div className="space-y-6">
+                    {/* Stars Rating */}
+                    <div className="flex items-center space-x-1">
+                      {renderStars(review.rating)}
+                    </div>
+
+                    {/* Review Text */}
+                    <div className="text-left relative">
+                      <p className="text-sm text-[#6A5A4D] font-normal leading-[1.8] relative z-10">
+                        "{displayText}"
+                        {isLongText && (
+                          <button
+                            onClick={() => toggleExpand(index)}
+                            className="text-[#8B6B4D] hover:text-[#2D241F] ml-1.5 font-bold uppercase tracking-widest text-[10px] hover:underline cursor-pointer transition-colors"
+                          >
+                            {isExpanded ? 'Show Less' : 'Read More'}
+                          </button>
+                        )}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Customer Info */}
+                  <div className="flex items-center space-x-3.5 pt-6 border-t border-[#DDD2C2]/30">
+                    {review.profile_photo_url ? (
+                      <img 
+                        src={review.profile_photo_url} 
+                        alt={review.author_name} 
+                        className="w-10 h-10 rounded-full object-cover border border-[#DDD2C2]/50"
+                        referrerPolicy="no-referrer"
+                      />
+                    ) : (
+                      <div className="w-10 h-10 rounded-full bg-[#F7F2EB] text-[#8B6B4D] flex items-center justify-center font-semibold text-sm border border-[#DDD2C2]/50">
+                        {review.author_name.charAt(0)}
+                      </div>
+                    )}
+                    <div className="text-left">
+                      <div className="flex items-center space-x-1.5">
+                        <h4 className="text-sm font-semibold text-[#2D241F] leading-tight">
+                          {review.author_name}
+                        </h4>
+                      </div>
+                      <span className="text-[10px] text-[#6A5A4D] font-mono tracking-widest uppercase block mt-1">
+                        {review.relative_time_description}
+                      </span>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
 
         {/* View on Google Maps Link */}

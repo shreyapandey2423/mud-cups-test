@@ -1,8 +1,10 @@
 export interface MenuItem {
   id: string;
   name: string;
-  price: number;
-  description: string;
+  price?: number;
+  priceR?: number | null;
+  priceL?: number | null;
+  description?: string;
   isVeg: boolean;
   isSpicy?: boolean;
 }
