@@ -78,16 +78,9 @@ export default function Header({ isIntroPlaying = false }: HeaderProps) {
   return (
     <motion.header
       id="header-nav"
-      initial={isIntroPlaying ? { opacity: 0, y: -10 } : { opacity: 1, y: 0 }}
-      animate={isIntroPlaying ? { opacity: [0, 1], y: [-10, 0] } : { opacity: 1, y: 0 }}
-      transition={isIntroPlaying ? {
-        duration: 0.8,
-        delay: 1.7,
-        ease: [0.22, 1, 0.36, 1],
-      } : {
-        duration: 0.3,
-        ease: [0.22, 1, 0.36, 1],
-      }}
+      initial={{ opacity: 0, y: -15 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
       className={`fixed top-4 left-0 right-0 z-50 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 ${
         isIntroPlaying ? 'pointer-events-none' : ''
       }`}
@@ -102,7 +95,7 @@ export default function Header({ isIntroPlaying = false }: HeaderProps) {
           ease: [0.22, 1, 0.36, 1]
         }}
         className={`border transition-all duration-500 rounded-full ${
-          isAtTop ? 'border-[#DDD2C2]/45 px-6 py-4' : 'border-[#DDD2C2]/65 px-6 py-3.5'
+          isAtTop ? 'border-[#DDD2C2]/45 px-8 py-3.5' : 'border-[#DDD2C2]/65 px-8 py-3'
         }`}
       >
         <div className="flex items-center justify-between">

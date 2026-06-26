@@ -18,23 +18,24 @@ export default function LocationFooter() {
                 <span className="text-[11px] font-bold font-mono uppercase tracking-[0.2em] text-[#8B6B4D]">
                   Find Us
                 </span>
-                <h2 className="text-3xl sm:text-4xl font-extrabold text-[#2D241F] tracking-tight">
+                <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-semibold text-[#2D241F] tracking-tight leading-[1.15]">
                   The Bangalore Space
                 </h2>
-                <p className="text-[#6A5A4D] text-sm font-light leading-relaxed">
+                <div className="h-[1px] w-12 bg-[#DDD2C2] my-6" />
+                <p className="text-[#6A5A4D] text-base font-normal leading-[1.8]">
                   Visit our quiet, warm, Scandinavian-inspired café environment. Slow down with aromatic clay cup chai and premium dining options.
                 </p>
               </div>
 
               {/* Exact Address block */}
-              <div className="space-y-6 pt-4">
+              <div className="space-y-8 pt-4">
                 <div className="flex items-start space-x-4">
                   <MapPin className="w-5 h-5 text-[#8B6B4D] shrink-0 mt-0.5" />
                   <div>
                     <h4 className="text-xs font-bold uppercase text-[#2D241F] tracking-widest font-mono">
                       Location Address
                     </h4>
-                    <p className="text-sm text-[#6A5A4D] font-light mt-1.5 leading-relaxed">
+                    <p className="text-sm text-[#6A5A4D] font-normal mt-1.5 leading-[1.8]">
                       Survey 61/14, Kammasandra,<br />
                       Near Jockey Showroom,<br />
                       Ananthnagar Main Road,<br />
@@ -51,7 +52,7 @@ export default function LocationFooter() {
                     <h4 className="text-xs font-bold uppercase text-[#2D241F] tracking-widest font-mono">
                       Opening Hours
                     </h4>
-                    <p className="text-sm text-[#6A5A4D] font-light mt-1.5">
+                    <p className="text-sm text-[#6A5A4D] font-normal mt-1.5 leading-[1.8]">
                       Monday – Sunday<br />
                       11:00 AM – 11:00 PM
                     </p>
@@ -69,7 +70,7 @@ export default function LocationFooter() {
                       href="https://www.instagram.com/mud_cups_ananthnagar/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block text-sm font-bold text-[#2D241F] hover:text-[#8B6B4D] transition-colors mt-1.5"
+                      className="block text-sm font-normal text-[#6A5A4D] hover:text-[#8B6B4D] transition-colors mt-1.5 leading-[1.8]"
                     >
                       Instagram • @mud_cups_ananthnagar
                     </a>
@@ -83,34 +84,34 @@ export default function LocationFooter() {
                   href="https://www.google.com/maps/dir/?api=1&destination=Mud+Cups+-+Ananthnagar"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center space-x-2 px-5 py-3 bg-[#8B6B4D] text-[#FFFDF9] hover:bg-[#A67C52] border border-[#8B6B4D] text-[10px] font-bold uppercase tracking-widest rounded-full transition-all duration-300"
+                  className="inline-flex items-center space-x-2 px-6 py-3.5 bg-[#2D241F] text-[#FFFDF9] hover:bg-[#3D312A] text-[11px] font-bold uppercase tracking-[0.2em] rounded-full transition-all duration-300 shadow-[0_4px_12px_rgba(45,36,31,0.1)] hover:shadow-[0_8px_20px_rgba(45,36,31,0.15)] active:scale-[0.98]"
                   id="btn-get-directions"
                 >
                   <span>Get Directions</span>
-                  <ExternalLink className="w-3 h-3" />
+                  <ExternalLink className="w-3.5 h-3.5" />
                 </a>
                 <a
                   href="https://www.google.com/maps/place/Mud+Cups+-+Ananthnagar/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center space-x-2 px-5 py-3 bg-[#FFFDF9] border border-[#DDD2C2] text-[#2D241F] hover:bg-[#F7F2EB] hover:border-[#8B6B4D] text-[10px] font-bold uppercase tracking-widest rounded-full transition-all duration-300"
+                  className="inline-flex items-center space-x-2 px-6 py-3.5 bg-[#FFFDF9] border border-[#DDD2C2] text-[#2D241F] hover:bg-[#F7F2EB] text-[11px] font-bold uppercase tracking-[0.2em] rounded-full transition-all duration-300 active:scale-[0.98]"
                   id="btn-open-maps"
                 >
-                  <span>Open in Google Maps</span>
-                  <ExternalLink className="w-3 h-3" />
+                  <span>Open in Maps</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
                 </a>
               </div>
             </div>
 
             {/* Premium Maps Column */}
-            <div className="lg:col-span-7 w-full space-y-8">
+            <div className="lg:col-span-7 w-full space-y-10 lg:pl-10">
               {/* Entrance Image Card */}
               <div className="space-y-4">
                 <div className="text-left">
-                  <h3 className="text-2xl font-black text-[#2D241F] tracking-tight animate-fade-in">
+                  <h3 className="text-2xl sm:text-3xl font-semibold text-[#2D241F] tracking-tight leading-[1.15]">
                     Visit Mud Cups.
                   </h3>
-                  <p className="text-[#6A5A4D] text-sm font-light leading-relaxed">
+                  <p className="text-[#6A5A4D] text-sm font-normal leading-[1.8]">
                     Easy to find. Hard to forget.
                   </p>
                 </div>
@@ -148,27 +149,27 @@ export default function LocationFooter() {
       {/* Instagram CTA Card */}
       <section className="bg-[#EFE6D8] pb-16">
         <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="bg-[#FFFDF9] border border-[#DDD2C2] rounded-[24px] p-8 sm:p-12 text-center space-y-6 shadow-[0_12px_40px_rgba(0,0,0,0.02)] relative overflow-hidden group">
-            <div className="absolute top-0 left-0 w-full h-[4px] bg-[#8B6B4D]" />
+          <div className="bg-[#FFFDF9] border border-[#DDD2C2]/50 rounded-[2rem] p-12 sm:p-16 text-center space-y-8 shadow-[0_4px_24px_rgba(45,36,31,0.04)] relative overflow-hidden group">
+            <div className="absolute top-0 left-0 w-full h-1 bg-[#8B6B4D]" />
             <div className="flex justify-center">
-              <div className="p-3 bg-[#8B6B4D]/10 rounded-full text-[#8B6B4D]">
+              <div className="p-4 bg-[#F7F2EB] rounded-full text-[#8B6B4D]">
                 <Instagram className="w-8 h-8 stroke-[1.5]" />
               </div>
             </div>
-            <div className="space-y-3 max-w-xl mx-auto">
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-[#2D241F] tracking-tight">
+            <div className="space-y-4 max-w-xl mx-auto">
+              <h3 className="text-2xl sm:text-3xl font-semibold text-[#2D241F] tracking-tight">
                 Follow Our Journey
               </h3>
-              <p className="text-sm sm:text-base text-[#6A5A4D] font-light leading-relaxed">
+              <p className="text-sm sm:text-base text-[#6A5A4D] font-normal leading-[1.8]">
                 Fresh brews, new menu launches, café moments and behind-the-scenes updates.
               </p>
             </div>
-            <div className="pt-2">
+            <div className="pt-4">
               <a
                 href="https://www.instagram.com/mud_cups_ananthnagar/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center space-x-2 px-8 py-3.5 bg-[#8B6B4D] hover:bg-[#A67C52] text-[#FFFDF9] text-xs font-bold uppercase tracking-[0.2em] rounded-full transition-all duration-300 shadow-md hover:shadow-lg hover:scale-103 cursor-pointer"
+                className="inline-flex items-center space-x-2 px-9 py-4 bg-[#2D241F] hover:bg-[#3D312A] text-[#FFFDF9] text-[11px] font-bold uppercase tracking-[0.2em] rounded-full transition-all duration-300 shadow-[0_4px_12px_rgba(45,36,31,0.1)] hover:shadow-[0_8px_20px_rgba(45,36,31,0.15)] active:scale-[0.98] cursor-pointer"
               >
                 <span>Follow on Instagram</span>
               </a>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Star, MessageSquare, Quote, ArrowRight, CheckCircle } from 'lucide-react';
+import { motion } from 'motion/react';
 
 declare const google: any;
 
@@ -185,18 +186,25 @@ export default function Testimonials() {
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         
         {/* Section Header */}
-        <div className="text-left max-w-3xl mb-16 space-y-4">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-10%" }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="text-left max-w-3xl mb-16 space-y-4"
+        >
           <span className="text-[11px] font-bold font-mono uppercase tracking-[0.2em] text-[#8B6B4D] flex items-center space-x-2">
             <MessageSquare className="w-3.5 h-3.5" />
             <span>Google Reviews</span>
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#2D241F] tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-semibold text-[#2D241F] tracking-tight leading-[1.15]">
             Loved by Locals
           </h2>
-          <p className="text-[#6A5A4D] text-base font-light leading-relaxed max-w-xl">
+          <div className="h-[1px] w-12 bg-[#DDD2C2] my-6" />
+          <p className="text-[#6A5A4D] text-base font-normal leading-[1.8] max-w-xl">
             Real feedback from our regular guests visiting Mud Cups in Electronic City, Bangalore.
           </p>
-        </div>
+        </motion.div>
 
         {/* Reviews Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl">
@@ -209,14 +217,18 @@ export default function Testimonials() {
               : originalText;
 
             return (
-              <div 
+              <motion.div 
                 key={index}
-                className="bg-[#FFFDF9] border border-[#DDD2C2]/50 p-6 sm:p-8 rounded-[2rem] flex flex-col justify-between space-y-6 shadow-[0_10px_30px_rgba(45,36,31,0.08)] transition-transform duration-300 hover:translate-y-[-2px]"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-10%" }}
+                transition={{ duration: 0.8, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                className="bg-[#FFFDF9] border border-[#DDD2C2]/30 p-8 sm:p-10 rounded-[2rem] flex flex-col justify-between space-y-8 shadow-[0_4px_24px_rgba(45,36,31,0.04)] transition-all duration-300"
               >
-                <div className="space-y-4">
+                <div className="space-y-6">
                   
                   {/* Top: Customer & Google Verification Badge */}
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center justify-between pb-4 border-b border-[#DDD2C2]/30">
                     <div className="flex items-center space-x-3.5">
                       {review.profile_photo_url ? (
                         <img 
@@ -267,12 +279,12 @@ export default function Testimonials() {
                   {/* Review Text */}
                   <div className="text-left relative">
                     <Quote className="w-8 h-8 text-[#DDD2C2]/40 absolute -top-4 -left-2 -z-1" />
-                    <p className="text-xs text-[#6A5A4D] font-light leading-relaxed pl-4 relative z-10">
+                    <p className="text-sm text-[#6A5A4D] font-normal leading-[1.8] pl-4 relative z-10">
                       "{displayText}"
                       {isLongText && (
                         <button
                           onClick={() => toggleExpand(index)}
-                          className="text-[#8B6B4D] hover:text-[#2D241F] ml-1.5 font-bold uppercase tracking-wider text-[9px] hover:underline cursor-pointer"
+                          className="text-[#8B6B4D] hover:text-[#2D241F] ml-1.5 font-bold uppercase tracking-wider text-[10px] hover:underline cursor-pointer"
                         >
                           {isExpanded ? 'Show Less' : 'Read More'}
                         </button>
@@ -281,7 +293,7 @@ export default function Testimonials() {
                   </div>
 
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
