@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Star, CheckCircle, ArrowRight } from 'lucide-react';
 import { motion } from 'motion/react';
+import qrCodeImg from '../assets/images/review/google-review-qr.png';
 
 interface AdditionalRating {
   label: string;
@@ -257,7 +258,7 @@ export default function Testimonials() {
             
             <div className="w-[140px] h-[140px] sm:w-[160px] sm:h-[160px] mx-auto mb-8 rounded-2xl overflow-hidden bg-white p-3 border border-[#DDD2C2]/50 shadow-sm hover:scale-[1.03] hover:shadow-md transition-all duration-[180ms] ease-out cursor-pointer">
               <img 
-                src="/images/review/google-review-qr.png" 
+                src={qrCodeImg} 
                 alt="Scan to leave a Google Review for Mud Cups" 
                 className="w-full h-full object-contain"
                 loading="lazy"

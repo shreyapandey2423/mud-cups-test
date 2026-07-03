@@ -2,17 +2,26 @@ import { motion, AnimatePresence } from 'motion/react';
 import { useState, useEffect, useCallback } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import PageHero from '../components/PageHero';
+import gallery01 from '../assets/gallery/gallery-01.webp.png';
+import gallery02 from '../assets/gallery/gallery-02.webp.png';
+import gallery03 from '../assets/gallery/gallery-03.webp.png';
+import gallery04 from '../assets/gallery/gallery-04.webp.png';
+import gallery05 from '../assets/gallery/gallery-05.webp.png';
+import gallery06 from '../assets/gallery/gallery-06.webp.png';
+import gallery07 from '../assets/gallery/gallery-07.webp.png';
+import gallery08 from '../assets/gallery/gallery-08.webp.png';
+import gallery09 from '../assets/gallery/gallery-09.webp.png';
 
 const originalImages = [
-  { src: '/gallery/gallery-01.webp.png' },
-  { src: '/gallery/gallery-02.webp.png' },
-  { src: '/gallery/gallery-03.webp.png' },
-  { src: '/gallery/gallery-04.webp.png' },
-  { src: '/gallery/gallery-05.webp.png' },
-  { src: '/gallery/gallery-06.webp.png' },
-  { src: '/gallery/gallery-07.webp.png' },
-  { src: '/gallery/gallery-08.webp.png' },
-  { src: '/gallery/gallery-09.webp.png' },
+  { src: gallery01 },
+  { src: gallery02 },
+  { src: gallery03 },
+  { src: gallery04 },
+  { src: gallery05 },
+  { src: gallery06 },
+  { src: gallery07 },
+  { src: gallery08 },
+  { src: gallery09 },
 ];
 
 export default function GalleryPage() {

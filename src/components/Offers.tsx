@@ -1,5 +1,7 @@
 import MudCupsLogo from './MudCupsLogo';
 import { motion } from 'motion/react';
+import swiggyLogo from '../assets/images/swiggy-logo.svg';
+import zomatoLogo from '../assets/images/zomato-logo.svg';
 import { Sparkles, ArrowRight } from 'lucide-react';
 
 export default function Offers() {
@@ -89,7 +91,7 @@ export default function Offers() {
                   >
                     {/* Swiggy Logo */}
                     <div className="w-12 h-12 bg-white rounded-xl shadow-sm border border-[#DDD2C2]/30 flex items-center justify-center mb-4 p-2">
-                      <img src="/images/swiggy-logo.svg" alt="Swiggy" className="w-full h-auto" loading="lazy" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling?.classList.remove('hidden'); }} />
+                      <img src={swiggyLogo} alt="Swiggy" className="w-full h-auto" loading="lazy" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling?.classList.remove('hidden'); }} />
                       <span className="hidden font-bold text-[#FC8019] text-sm tracking-tight">SWIGGY</span>
                     </div>
                     <h4 className="text-lg font-semibold text-[#2D241F] tracking-tight mb-1">Swiggy</h4>
@@ -109,7 +111,7 @@ export default function Offers() {
                   >
                     {/* Zomato Logo */}
                     <div className="w-12 h-12 bg-white rounded-xl shadow-sm border border-[#DDD2C2]/30 flex items-center justify-center mb-4 p-2">
-                      <img src="/images/zomato-logo.svg" alt="Zomato" className="w-full h-auto" loading="lazy" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling?.classList.remove('hidden'); }} />
+                      <img src={zomatoLogo} alt="Zomato" className="w-full h-auto" loading="lazy" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling?.classList.remove('hidden'); }} />
                       <span className="hidden font-bold text-[#E23744] text-sm tracking-tight font-serif italic">Zomato</span>
                     </div>
                     <h4 className="text-lg font-semibold text-[#2D241F] tracking-tight mb-1">Zomato</h4>

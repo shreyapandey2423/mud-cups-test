@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Search, Coffee, CupSoda, IceCream, Utensils, Sandwich, Pizza, Star, Scroll } from 'lucide-react';
 import { motion } from 'motion/react';
 import { categories } from '../data/menu';
+import menuIntroImg from '../assets/images/menu-intro.jpg';
 
 export default function MenuSection() {
   const [searchQuery, setSearchQuery] = useState<string>('');
@@ -127,7 +128,7 @@ export default function MenuSection() {
           >
             <div className="relative rounded-full overflow-hidden shadow-[0_12px_40px_rgba(45,36,31,0.08)] bg-[#F7F2EB] aspect-square group border-8 border-[#FFFDF9]">
               <img
-                src="/images/menu-intro.jpg"
+                src={menuIntroImg}
                 alt="Snacks and Drinks at Mud Cups"
                 className="w-full h-full object-cover transition-all duration-1000 ease-[0.22,1,0.36,1] group-hover:scale-105"
                 loading="lazy"

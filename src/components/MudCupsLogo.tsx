@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { createPortal } from 'react-dom';
+import mudCupsLogoImg from '../assets/logo/mud-cups-logo.png';
 
 interface MudCupsLogoProps {
   className?: string;
@@ -46,7 +47,7 @@ export default function MudCupsLogo({ className = '', size, interactive = true }
           onClick={() => setIsOpen(false)}
         >
           <motion.img
-            src="/images/logo/mud-cups-logo.png"
+            src={mudCupsLogoImg}
             alt="Mud Cups Logo Enlarged"
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
@@ -72,7 +73,7 @@ export default function MudCupsLogo({ className = '', size, interactive = true }
         aria-label="Mud Cups Logo"
       >
         <motion.img
-          src="/images/logo/mud-cups-logo.png"
+          src={mudCupsLogoImg}
           alt="Mud Cups Logo"
           className="w-full h-full object-contain"
           whileHover={interactive ? { scale: 1.03 } : {}}

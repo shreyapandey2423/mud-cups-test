@@ -1,5 +1,6 @@
 import MudCupsLogo from './MudCupsLogo';
 import { motion } from 'motion/react';
+import featuredFoodImg from '../assets/images/featured-food.jpg';
 
 export default function FeaturedFood() {
   return (
@@ -42,7 +43,7 @@ export default function FeaturedFood() {
             
             <div className="relative rounded-2xl overflow-hidden shadow-[0_12px_40px_rgba(45,36,31,0.08)] bg-[#F7F2EB] aspect-[4/5] sm:aspect-[3/4] group z-10">
               <img
-                src="/images/featured-food.jpg"
+                src={featuredFoodImg}
                 alt="Fresh Food & Drinks at Mud Cups"
                 className="w-full h-full object-cover transition-all duration-1000 ease-[0.22,1,0.36,1] group-hover:scale-[1.03]"
                 loading="lazy"

@@ -2,6 +2,7 @@ import { motion, useScroll, useTransform } from 'motion/react';
 import { Sparkles, ArrowDown } from 'lucide-react';
 import ImageWithFallback from './ImageWithFallback';
 import { useRef } from 'react';
+import heroImg from '../assets/images/hero.jpg';
 
 interface HeroProps {
   isIntroActive?: boolean;
@@ -51,7 +52,7 @@ export default function Hero({ isIntroActive = false }: HeroProps) {
         className="absolute inset-0 z-0 select-none pointer-events-none overflow-hidden"
       >
         <ImageWithFallback
-          src="/images/hero.jpg"
+          src={heroImg}
           fallbackSrc="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=1600"
           alt="Mud Cups Café Interior"
           className="w-full h-full object-cover object-[72%_center] sm:object-center opacity-30"
