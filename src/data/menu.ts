@@ -51,12 +51,15 @@ export const categories: MenuCategory[] = [
     id: 'cold-tik-tok',
     name: 'Cold Tik Tok',
     items: [
-      { id: 'ct1', name: 'Butter Milk', price: 39, isVeg: true },
+      { id: 'ct1', name: 'Butter Milk', price: 49, isVeg: true },
       { id: 'ct2', name: 'Mint Mojito', price: 99, isVeg: true },
       { id: 'ct3', name: 'Watermelon Mojito', price: 99, isVeg: true },
       { id: 'ct4', name: 'Mango Mojito', price: 99, isVeg: true },
       { id: 'ct5', name: 'Blue Lagoon Mojito', price: 99, isVeg: true },
-      { id: 'ct6', name: 'Green Virgin Mojito', price: 99, isVeg: true }
+      { id: 'ct6', name: 'Green Virgin Mojito', price: 99, isVeg: true },
+      { id: 'ct7', name: 'Plain Lemon Soda', price: 55, isVeg: true },
+      { id: 'ct8', name: 'Green Mint Lime Soda', price: 65, isVeg: true },
+      { id: 'ct9', name: 'Blue Mint Lime Soda', price: 65, isVeg: true }
     ]
   },
   {
@@ -72,23 +75,24 @@ export const categories: MenuCategory[] = [
     id: 'milk-shakes',
     name: 'Milk Shakes',
     items: [
+      { id: 'ms8', name: 'Tender Coconut Milkshake', price: 109, isVeg: true },
       { id: 'ms1', name: 'Mango Milkshake', price: 89, isVeg: true },
       { id: 'ms2', name: 'Vanilla Milkshake', price: 89, isVeg: true },
       { id: 'ms3', name: 'Butterscotch Milkshake', price: 89, isVeg: true },
       { id: 'ms4', name: 'Strawberry Milkshake', price: 89, isVeg: true },
       { id: 'ms5', name: 'Chocolate Milkshake', price: 99, isVeg: true },
-      { id: 'ms6', name: 'Kit Kat Milkshake', price: 109, isVeg: true },
-      { id: 'ms7', name: 'Oreo Milkshake', price: 109, isVeg: true }
+      { id: 'ms6', name: 'Kit Kat Milkshake', price: 109, isVeg: true, isChefPick: true },
+      { id: 'ms7', name: 'Oreo Milkshake', price: 109, isVeg: true, isChefPick: true }
     ]
   },
   {
     id: 'quick-bites',
     name: 'Quick Bites',
     items: [
-      { id: 'qb1', name: 'Crispy Corn', price: 99, isVeg: true },
-      { id: 'qb2', name: 'Potato Wedges', price: 109, isVeg: true },
-      { id: 'qb3', name: 'Chilli Garlics Pops', price: 109, isVeg: true },
-      { id: 'qb4', name: 'Veg Fingers', price: 119, isVeg: true }
+      { id: 'qb1', name: 'Crispy Corn', price: 109, isVeg: true },
+      { id: 'qb2', name: 'Potato Wedges', price: 119, isVeg: true },
+      { id: 'qb3', name: 'Chilli Garlics Pops', price: 119, isVeg: true },
+      { id: 'qb4', name: 'Veg Fingers', price: 129, isVeg: true }
     ]
   },
   {
@@ -104,110 +108,113 @@ export const categories: MenuCategory[] = [
     id: 'sosi-sandwich',
     name: 'Sosi Sandwich',
     items: [
-      { id: 'ss1', name: 'Bread Butter Jam', price: 49, isVeg: true },
-      { id: 'ss2', name: 'Veg Sandwich', price: 69, isVeg: true },
-      { id: 'ss3', name: 'Corn Peri Peri Sandwich', price: 89, isVeg: true },
-      { id: 'ss4', name: 'Egg Sandwich', price: 79, isVeg: false },
-      { id: 'ss5', name: 'Boiled Egg Sandwich', price: 79, isVeg: false },
-      { id: 'ss6', name: 'Chilli Cheese Sandwich', price: 79, isVeg: true },
-      { id: 'ss7', name: 'Corn Peri Peri Cheese Sandwich', price: 99, isVeg: true },
-      { id: 'ss8', name: 'Veg Paneer Sandwich', price: 99, isVeg: true },
-      { id: 'ss9', name: 'Chocolate Sandwich', price: 99, isVeg: true },
-      { id: 'ss10', name: 'Peanut Nutella Sandwich', price: 99, isVeg: true },
-      { id: 'ss11', name: 'Choco Peanut Nutella Sandwich', price: 99, isVeg: true }
+      { id: 'ss1', name: 'Bread Butter Jam', price: 59, isVeg: true },
+      { id: 'ss2', name: 'Veg Sandwich', price: 79, isVeg: true },
+      { id: 'ss3', name: 'Corn Peri Peri Sandwich', price: 99, isVeg: true },
+      { id: 'ss4', name: 'Egg Sandwich', price: 89, isVeg: false },
+      { id: 'ss5', name: 'Boiled Egg Sandwich', price: 89, isVeg: false },
+      { id: 'ss6', name: 'Chilli Cheese Sandwich', price: 89, isVeg: true },
+      { id: 'ss7', name: 'Corn Peri Peri Cheese Sandwich', price: 109, isVeg: true },
+      { id: 'ss8', name: 'Veg Paneer Sandwich', price: 109, isVeg: true },
+      { id: 'ss9', name: 'Chocolate Sandwich', price: 109, isVeg: true },
+      { id: 'ss10', name: 'Peanut Nutella Sandwich', price: 109, isVeg: true },
+      { id: 'ss11', name: 'Choco Peanut Nutella Sandwich', price: 109, isVeg: true }
     ]
   },
   {
     id: 'fries-fashion',
     name: 'Fries Fashion',
     items: [
-      { id: 'ff1', name: 'Plain French Fries', price: 89, isVeg: true },
-      { id: 'ff2', name: 'Peri Peri Fries', price: 99, isVeg: true, isSpicy: true },
-      { id: 'ff3', name: 'Cheese Peri Peri Fries', price: 119, isVeg: true, isSpicy: true },
-      { id: 'ff4', name: 'Mexican Fries', price: 109, isVeg: true, isSpicy: true },
-      { id: 'ff5', name: 'Loaded Fries', price: 149, isVeg: true },
-      { id: 'ff6', name: 'Fries Platter', price: 189, isVeg: true }
+      { id: 'ff1', name: 'Plain French Fries', price: 99, isVeg: true },
+      { id: 'ff2', name: 'Peri Peri Fries', price: 109, isVeg: true, isSpicy: true },
+      { id: 'ff3', name: 'Cheese Peri Peri Fries', price: 129, isVeg: true, isSpicy: true },
+      { id: 'ff4', name: 'Mexican Fries', price: 119, isVeg: true, isSpicy: true },
+      { id: 'ff5', name: 'Loaded Fries', price: 159, isVeg: true },
+      { id: 'ff6', name: 'Fries Platter', price: 199, isVeg: true },
+      { id: 'ff7', name: 'Popcorn Fries (Plain)', price: 89, isVeg: true },
+      { id: 'ff8', name: 'Popcorn Fries (Peri)', price: 99, isVeg: true, isSpicy: true }
     ]
   },
   {
     id: 'busy-burger',
     name: 'Busy Burger',
     items: [
-      { id: 'bg1', name: 'Veg Aloo Tikki Burger', price: 99, isVeg: true },
-      { id: 'bg2', name: 'Egg Burger', price: 109, isVeg: false },
-      { id: 'bg3', name: 'Mud Cups Special Burger', price: 129, isVeg: true },
-      { id: 'bg4', name: 'Twin Burger (Veg)', price: 129, isVeg: true },
-      { id: 'bg5', name: 'Tower Burger', price: 149, isVeg: true }
+      { id: 'bg1', name: 'Veg Aloo Tikki Burger', price: 109, isVeg: true },
+      { id: 'bg2', name: 'Egg Burger', price: 119, isVeg: false },
+      { id: 'bg3', name: 'Mud Cups Special Burger', price: 169, isVeg: true, isChefPick: true },
+      { id: 'bg4', name: 'Twin Burger (Veg)', price: 139, isVeg: true },
+      { id: 'bg5', name: 'Tower Burger', price: 159, isVeg: true }
     ]
   },
   {
     id: 'nuggets',
     name: 'Nuggets',
     items: [
-      { id: 'n1', name: 'Veg Nuggets', price: 99, isVeg: true },
-      { id: 'n2', name: 'Cheese Nuggets', price: 109, isVeg: true },
-      { id: 'n3', name: 'Potato Bites', price: 99, isVeg: true },
-      { id: 'n4', name: 'Corn Cheese Nuggets', price: 119, isVeg: true },
-      { id: 'n5', name: 'Nuggets Lolli Pop', price: 119, isVeg: true }
+      { id: 'n1', name: 'Veg Nuggets', price: 109, isVeg: true },
+      { id: 'n2', name: 'Cheese Nuggets', price: 119, isVeg: true },
+      { id: 'n4', name: 'Corn Cheese Nuggets', price: 129, isVeg: true },
+      { id: 'n5', name: 'Nuggets Lolli Pop', price: 129, isVeg: true }
     ]
   },
   {
     id: 'mazza-momos',
     name: 'Mazza Momos',
     items: [
-      { id: 'mm1', name: 'Veg Momos (Fried)', price: 89, isVeg: true },
-      { id: 'mm2', name: 'Paneer Momos (Fried)', price: 99, isVeg: true }
+      { id: 'mm3', name: 'Mushroom Momos', price: 119, isVeg: true },
+      { id: 'mm1', name: 'Veg Momos (Fried)', price: 99, isVeg: true },
+      { id: 'mm2', name: 'Paneer Momos (Fried)', price: 109, isVeg: true },
+      { id: 'mm4', name: 'Corn & Cheese (Fried)', price: 119, isVeg: true }
     ]
   },
   {
     id: 'pizza-paradise',
     name: 'Pizza Paradise',
     items: [
-      { id: 'pp1', name: 'Mexican Pizza', price: 149, isVeg: true },
-      { id: 'pp2', name: 'Corn Cheese Pizza', price: 159, isVeg: true },
-      { id: 'pp3', name: 'Italian Pizza', price: 169, isVeg: true },
-      { id: 'pp4', name: 'Paneer Pizza', price: 179, isVeg: true },
-      { id: 'pp5', name: 'Mud Cups Special Pizza', price: 189, isVeg: true }
+      { id: 'pp1', name: 'Mexican Pizza', price: 159, isVeg: true },
+      { id: 'pp2', name: 'Corn Cheese Pizza', price: 169, isVeg: true },
+      { id: 'pp3', name: 'Italian Pizza', price: 179, isVeg: true },
+      { id: 'pp4', name: 'Paneer Pizza', price: 189, isVeg: true },
+      { id: 'pp5', name: 'Mud Cups Special Pizza', price: 199, isVeg: true, isChefPick: true }
     ]
   },
   {
     id: 'rolls',
     name: 'Rolls',
     items: [
-      { id: 'r1', name: 'Veg Roll', price: 69, isVeg: true },
-      { id: 'r2', name: 'Egg Roll', price: 79, isVeg: false },
-      { id: 'r3', name: 'Veg-Cheese Roll', price: 79, isVeg: true },
-      { id: 'r4', name: 'Paneer Roll', price: 99, isVeg: true },
-      { id: 'r5', name: 'Egg-Cheese Roll', price: 89, isVeg: false },
-      { id: 'r6', name: 'Paneer-Cheese Roll', price: 109, isVeg: true }
+      { id: 'r1', name: 'Veg Roll', price: 79, isVeg: true },
+      { id: 'r2', name: 'Egg Roll', price: 89, isVeg: false },
+      { id: 'r3', name: 'Veg-Cheese Roll', price: 89, isVeg: true },
+      { id: 'r4', name: 'Paneer Roll', price: 109, isVeg: true },
+      { id: 'r5', name: 'Egg-Cheese Roll', price: 99, isVeg: false },
+      { id: 'r6', name: 'Paneer-Cheese Roll', price: 119, isVeg: true }
     ]
   },
   {
     id: 'egg-panda',
     name: 'Egg Panda',
     items: [
-      { id: 'ep1', name: 'Special Boiled Eggs (4 No)', price: 49, isVeg: false },
-      { id: 'ep2', name: 'Bread Omelette', price: 69, isVeg: false },
-      { id: 'ep3', name: 'Bun Egg Fry', price: 69, isVeg: false },
-      { id: 'ep4', name: 'Bread Mayo Omelette', price: 79, isVeg: false }
+      { id: 'ep1', name: 'Special Boiled Eggs (2 No)', price: 59, isVeg: false },
+      { id: 'ep2', name: 'Bread Omelette', price: 79, isVeg: false },
+      { id: 'ep3', name: 'Bun Egg Fry', price: 89, isVeg: false },
+      { id: 'ep4', name: 'Bread Mayo Omelette', price: 89, isVeg: false }
     ]
   },
   {
     id: 'mazza-maggie',
     name: 'Mazza Maggie',
     items: [
-      { id: 'mg1', name: 'Veg Maggie', price: 49, isVeg: true },
-      { id: 'mg2', name: 'Egg Maggie', price: 69, isVeg: false },
-      { id: 'mg3', name: 'Corn Maggie', price: 69, isVeg: true },
-      { id: 'mg4', name: 'Schezwan Paneer Maggie', price: 89, isVeg: true, isSpicy: true }
+      { id: 'mg1', name: 'Veg Maggie', price: 59, isVeg: true },
+      { id: 'mg2', name: 'Egg Maggie', price: 89, isVeg: false },
+      { id: 'mg3', name: 'Corn Maggie', price: 79, isVeg: true },
+      { id: 'mg4', name: 'Schezwan Paneer Maggie', price: 99, isVeg: true, isSpicy: true }
     ]
   },
   {
     id: 'pasta-porsh',
     name: 'Pasta Porsh',
     items: [
-      { id: 'pt1', name: 'Indian Masala Pasta', price: 159, isVeg: true },
-      { id: 'pt2', name: 'Creamy Pasta', price: 169, isVeg: true }
+      { id: 'pt1', name: 'Indian Masala Pasta', price: 179, isVeg: true },
+      { id: 'pt2', name: 'Creamy Pasta', price: 189, isVeg: true }
     ]
-  }
+  },
 ];

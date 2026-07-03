@@ -22,13 +22,30 @@
     scroll-behavior: smooth;
     background-color: #F7F2EB;
     color: #2D241F;
-    /* Hide scrollbars globally */
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
   }
   
-  html::-webkit-scrollbar, body::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
+  /* Minimal native scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #DDD2C2;
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #8B6B4D;
+  }
+  
+  @keyframes marqueeLeftToRight {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0%); }
   }
   
   body {
@@ -61,3 +78,37 @@
 .animate-fadeIn {
   animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
+
+/* GLOBAL POLISH */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+p {
+  line-height: 1.7;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -0.02em;
+}
+
+/* Button & Link Hover Standards */
+button, a {
+  transition-duration: 180ms !important;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+/* Standardized Shadows for interactive elements */
+.shadow-hover {
+  box-shadow: 0 4px 14px rgba(45,36,31,0.06);
+}
+
+.shadow-hover:hover {
+  box-shadow: 0 8px 24px rgba(45,36,31,0.08);
+}
+

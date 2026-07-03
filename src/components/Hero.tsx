@@ -37,7 +37,7 @@ export default function Hero({ isIntroActive = false }: HeroProps) {
     <section
       id="hero"
       ref={containerRef}
-      className="relative min-h-[90vh] sm:min-h-screen flex items-center justify-center overflow-hidden bg-[#F7F2EB] py-16 sm:py-32"
+      className="scroll-mt-24 relative min-h-[90vh] sm:min-h-screen flex items-center justify-center overflow-hidden bg-[#F7F2EB] py-16 sm:py-32"
     >
       {/* 1. LAYERED BACKGROUND SYSTEM (DEPTH & LIGHTING) */}
       <div className="absolute inset-0 bg-[#F7F2EB] z-0" />
@@ -63,14 +63,14 @@ export default function Hero({ isIntroActive = false }: HeroProps) {
       {/* 2. HERO CONTENT AREA */}
       <motion.div 
         style={{ y: contentY, opacity }}
-        className="relative z-10 max-w-[800px] mx-auto px-6 text-center flex flex-col items-center justify-center pt-12 pb-12 sm:pt-20"
+        className="scroll-mt-24 relative z-10 max-w-[800px] mx-auto px-6 text-center flex flex-col items-center justify-center pt-12 pb-12 sm:pt-20"
       >
         {/* Clay Cup Micro Interaction */}
         <motion.div 
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: easeCurve }}
-          className="relative mb-6"
+          className="scroll-mt-24 relative mb-6"
         >
           {/* Steam */}
           <div className="absolute -top-10 left-1/2 -translate-x-1/2 flex space-x-1">
@@ -115,7 +115,7 @@ export default function Hero({ isIntroActive = false }: HeroProps) {
         >
           <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#FFFDF9]/80 backdrop-blur-sm border border-[#DDD2C2]/50 text-[10px] sm:text-[11px] font-bold font-mono uppercase tracking-[0.2em] text-[#8B6B4D] shadow-sm">
             <Sparkles className="w-3 h-3 text-[#B99872]" />
-            <span>Revoking Traditional Taste</span>
+            <span>Reviving Traditional Taste</span>
           </span>
         </motion.div>
         
@@ -134,24 +134,10 @@ export default function Hero({ isIntroActive = false }: HeroProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3, ease: easeCurve }}
-          className="text-base sm:text-lg text-[#6A5A4D] leading-[1.8] font-normal max-w-[500px] mx-auto mb-8 sm:mb-12"
+          className="text-base sm:text-lg text-[#6A5A4D] leading-[1.8] font-normal max-w-[500px] mx-auto"
         >
           Mud Cups—where smoky Tandoori Chai meets toasty bites, chilled conversations, and cozy vibes.
         </motion.p>
-
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4, ease: easeCurve }}
-        >
-          <button
-            onClick={handleScrollToMenu}
-            className="px-9 py-4 bg-[#2D241F] hover:bg-[#3D312A] text-[#FFFDF9] text-[11px] font-bold uppercase tracking-[0.2em] rounded-full shadow-[0_8px_20px_rgba(45,36,31,0.1)] hover:shadow-[0_12px_24px_rgba(45,36,31,0.15)] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-300 cursor-pointer"
-          >
-            View Menu
-          </button>
-        </motion.div>
       </motion.div>
 
       {/* Down arrow scroll helper */}
@@ -163,7 +149,7 @@ export default function Hero({ isIntroActive = false }: HeroProps) {
       >
         <button
           onClick={handleScrollToMenu}
-          className="text-[#8B6B4D]/40 hover:text-[#2D241F] transition-colors cursor-pointer p-4"
+          className="text-[#8B6B4D]/40 hover:text-[#2D241F] transition-colors cursor-pointer p-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F7F2EB] rounded-full"
           aria-label="Scroll to Menu"
         >
           <motion.div

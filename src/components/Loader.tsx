@@ -1,4 +1,5 @@
 import { motion, AnimatePresence } from 'motion/react';
+import MudCupsLogo from './MudCupsLogo';
 
 interface LoaderProps {
   isLoading: boolean;
@@ -52,33 +53,15 @@ export default function Loader({ isLoading }: LoaderProps) {
               ))}
             </motion.div>
 
-            {/* Minimal Clay Cup */}
-            <motion.svg
-              width="48"
-              height="48"
-              viewBox="0 0 48 48"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="text-[#8B6B4D] mb-4"
+            {/* New Mud Cups Logo */}
+            <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              className="mb-4 flex justify-center items-center"
             >
-              <path
-                d="M10 12L14 36C14.5 39 17 41 20 41H28C31 41 33.5 39 34 36L38 12H10Z"
-                stroke="currentColor"
-                strokeWidth="3"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M6 12H42"
-                stroke="currentColor"
-                strokeWidth="3"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </motion.svg>
+              <MudCupsLogo interactive={false} className="w-[55px] h-[55px] md:w-[65px] md:h-[65px] lg:w-[75px] lg:h-[75px]" />
+            </motion.div>
 
             {/* Mud Cups Logo / Name */}
             <motion.h1

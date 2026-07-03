@@ -1,3 +1,4 @@
+import MudCupsLogo from './MudCupsLogo';
 import { motion } from 'motion/react';
 import { Sparkles, ArrowRight } from 'lucide-react';
 
@@ -5,7 +6,8 @@ export default function Offers() {
   return (
     <section
       id="offers"
-      className="bg-[#EFE6D8] py-20 lg:py-28 relative border-b border-[#DDD2C2]/60 overflow-hidden"
+       
+      className="scroll-mt-24 bg-[#EFE6D8] py-20 lg:py-28 relative border-b border-[#DDD2C2]/60 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         
@@ -22,7 +24,7 @@ export default function Offers() {
           >
             <div className="space-y-4">
               <span className="text-[11px] font-bold font-mono uppercase tracking-[0.2em] text-[#8B6B4D] flex items-center space-x-2">
-                <Sparkles className="w-3.5 h-3.5" />
+                <MudCupsLogo size={14} className="text-[#8B6B4D] opacity-80" />
                 <span>Seasonal Perks</span>
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-semibold text-[#2D241F] tracking-tight leading-[1.15]">
@@ -51,7 +53,7 @@ export default function Offers() {
             </div>
           </motion.div>
 
-          {/* Right Column: District Offer Featured Card */}
+          {/* Right Column: Online Order Featured Card */}
           <motion.div 
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -66,31 +68,57 @@ export default function Offers() {
               <div className="relative z-10 space-y-10 text-left">
                 <div className="space-y-6">
                   <span className="text-[10px] font-bold font-mono text-[#8B6B4D] uppercase tracking-widest bg-[#F7F2EB] px-4 py-1.5 rounded-full border border-[#DDD2C2]/60 flex items-center gap-1.5 w-fit shadow-sm">
-                    <span>Exclusive Partner Offer</span>
+                    <span>Online Order</span>
                   </span>
                   <h3 className="text-3xl sm:text-4xl font-semibold text-[#2D241F] tracking-tight leading-[1.15]">
-                    Unlock Premium<br />Offers on District.
+                    Order Your<br />Favorites
                   </h3>
                   <div className="h-[1px] w-12 bg-[#DDD2C2] my-4" />
                   <p className="text-base text-[#6A5A4D] font-normal leading-[1.8] max-w-md">
-                    Discover the latest discounts, exclusive deals, and seasonal offers available for Mud Cups through District.
+                    Order directly from your preferred delivery partner.
                   </p>
                 </div>
 
-                <div className="pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+                <div className="pt-2 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  {/* Swiggy Card */}
                   <a
-                    href="https://www.district.in/dining/bangalore/mud-cups-10-electronic-city-bangalore"
+                    href="https://www.swiggy.com/restaurants/mud-cups-electronic-city-bangalore-1218505"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center space-x-3 px-8 py-4 bg-[#2D241F] hover:bg-[#3D312A] text-[#FFFDF9] text-[11px] font-bold uppercase tracking-[0.2em] rounded-full transition-all duration-300 shadow-[0_4px_12px_rgba(45,36,31,0.1)] hover:shadow-[0_8px_20px_rgba(45,36,31,0.15)] active:scale-[0.98] cursor-pointer"
-                    id="btn-view-district"
+                    className="flex flex-col items-start bg-[#F7F2EB] border border-[#DDD2C2]/50 p-6 rounded-2xl transition-all duration-300 hover:shadow-[0_8px_24px_rgba(45,36,31,0.08)] hover:-translate-y-1 group/btn focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFDF9]"
                   >
-                    <span>View Offers</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
+                    {/* Swiggy Logo */}
+                    <div className="w-12 h-12 bg-white rounded-xl shadow-sm border border-[#DDD2C2]/30 flex items-center justify-center mb-4 p-2">
+                      <img src="/images/swiggy-logo.svg" alt="Swiggy" className="w-full h-auto" loading="lazy" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling?.classList.remove('hidden'); }} />
+                      <span className="hidden font-bold text-[#FC8019] text-sm tracking-tight">SWIGGY</span>
+                    </div>
+                    <h4 className="text-lg font-semibold text-[#2D241F] tracking-tight mb-1">Swiggy</h4>
+                    <p className="text-xs text-[#6A5A4D] font-normal mb-5">Fast Delivery</p>
+                    <div className="mt-auto flex items-center space-x-2 text-[11px] font-bold uppercase tracking-[0.15em] text-[#8B6B4D] group-hover/btn:text-[#2D241F] transition-colors">
+                      <span>Order on Swiggy</span>
+                      <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover/btn:translate-x-1" />
+                    </div>
                   </a>
-                  <span className="text-[11px] font-mono font-semibold text-[#8B6B4D] uppercase tracking-widest text-right">
-                    Dining Deals • District
-                  </span>
+
+                  {/* Zomato Card */}
+                  <a
+                    href="https://www.zomato.com/bangalore/mud-cups-10-electronic-city-bangalore/order"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex flex-col items-start bg-[#F7F2EB] border border-[#DDD2C2]/50 p-6 rounded-2xl transition-all duration-300 hover:shadow-[0_8px_24px_rgba(45,36,31,0.08)] hover:-translate-y-1 group/btn focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFDF9]"
+                  >
+                    {/* Zomato Logo */}
+                    <div className="w-12 h-12 bg-white rounded-xl shadow-sm border border-[#DDD2C2]/30 flex items-center justify-center mb-4 p-2">
+                      <img src="/images/zomato-logo.svg" alt="Zomato" className="w-full h-auto" loading="lazy" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling?.classList.remove('hidden'); }} />
+                      <span className="hidden font-bold text-[#E23744] text-sm tracking-tight font-serif italic">Zomato</span>
+                    </div>
+                    <h4 className="text-lg font-semibold text-[#2D241F] tracking-tight mb-1">Zomato</h4>
+                    <p className="text-xs text-[#6A5A4D] font-normal mb-5">Order Online</p>
+                    <div className="mt-auto flex items-center space-x-2 text-[11px] font-bold uppercase tracking-[0.15em] text-[#8B6B4D] group-hover/btn:text-[#2D241F] transition-colors">
+                      <span>Order on Zomato</span>
+                      <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover/btn:translate-x-1" />
+                    </div>
+                  </a>
                 </div>
               </div>
             </div>

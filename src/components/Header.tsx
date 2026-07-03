@@ -1,221 +1,254 @@
-import { useState, useEffect } from 'react';
-import { Menu, X, Instagram } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import { Menu, X, Instagram } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import MudCupsLogo from './MudCupsLogo';
 
 interface HeaderProps {
-  isIntroPlaying?: boolean;
+  isIntroPlaying: boolean;
 }
 
-export default function Header({ isIntroPlaying = false }: HeaderProps) {
+const allNavItems = [
+  { label: 'Home', path: '/#hero', id: 'hero' },
+  { label: 'About', path: '/#about', id: 'about' },
+  { label: 'Experience', path: '/#offers', id: 'offers' },
+  { label: 'Menu', path: '/menu', id: 'menu' },
+  { label: 'Gallery', path: '/gallery', id: 'gallery' },
+  { label: 'Testimonials', path: '/testimonials', id: 'testimonials' },
+  { label: 'Visit Us', path: '/visit-us', id: 'location' }
+];
+
+export default function Header({ isIntroPlaying }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isAtTop, setIsAtTop] = useState(true);
-  const [scrollDirection, setScrollDirection] = useState<'up' | 'down' | null>(null);
-  const [isHovered, setIsHovered] = useState(false);
+  const [activeSection, setActiveSection] = useState('hero');
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    let lastScrollY = window.pageYOffset;
-    
     const handleScroll = () => {
-      const currentScrollY = window.pageYOffset;
-      
-      if (currentScrollY <= 15) {
-        setIsAtTop(true);
-        setScrollDirection(null);
-      } else {
-        setIsAtTop(false);
-        if (currentScrollY > lastScrollY) {
-          setScrollDirection('down');
-        } else if (currentScrollY < lastScrollY) {
-          setScrollDirection('up');
-        }
-      }
-      
-      lastScrollY = currentScrollY;
+      const atTop = window.scrollY <= 15;
+      setIsAtTop(prev => prev !== atTop ? atTop : prev);
     };
-    
     window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (id: string) => {
-    setIsOpen(false);
-    const element = document.getElementById(id);
-    if (element) {
-      // Offset for sticky header
-      const headerOffset = 70;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+  useEffect(() => {
+    if (location.pathname !== '/') return;
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      let newActive = null;
       
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          newActive = entry.target.id;
+        }
       });
+      
+      if (newActive) {
+        setActiveSection(newActive);
+      }
+    };
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -60% 0px',
+      threshold: 0
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    
+    ['hero', 'about', 'offers'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, [location.pathname]);
+
+  const handleNavClick = (path: string, id: string) => {
+    setIsOpen(false);
+    if (path.startsWith('/#')) {
+      if (location.pathname === '/') {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      } else {
+        navigate(path);
+      }
+    } else {
+      navigate(path);
     }
   };
 
-  const isQuiet = !isAtTop && scrollDirection === 'down' && !isOpen && !isHovered;
+  const getIsActive = (item: typeof allNavItems[0]) => {
+    if (item.path.startsWith('/#')) {
+      return location.pathname === '/' && activeSection === item.id;
+    }
+    return location.pathname === item.path;
+  };
 
   const animVariants = {
     active: {
       opacity: 1,
-      scale: 1,
       y: 0,
-      backgroundColor: isAtTop ? 'rgba(255, 253, 249, 0.75)' : 'rgba(255, 253, 249, 0.90)',
-      boxShadow: isAtTop ? '0 4px 30px rgba(45, 36, 31, 0.03)' : '0 12px 40px rgba(45, 36, 31, 0.08)',
-      backdropFilter: isAtTop ? 'blur(8px)' : 'blur(12px)',
-    },
-    quiet: {
-      opacity: 0.38,
-      scale: 0.96,
-      y: -10,
-      backgroundColor: 'rgba(255, 253, 249, 0.25)',
-      boxShadow: '0 2px 10px rgba(45, 36, 31, 0.01)',
-      backdropFilter: 'blur(8px)',
+      backgroundColor: isAtTop ? 'rgba(247, 242, 235, 0)' : 'rgba(247, 242, 235, 0.85)',
+      boxShadow: isAtTop ? '0 0 0 rgba(0,0,0,0)' : '0 4px 24px rgba(45, 36, 31, 0.04)',
+      backdropFilter: isAtTop ? 'blur(0px)' : 'blur(12px)',
+      borderBottomColor: isAtTop ? 'transparent' : 'rgba(221, 210, 194, 0.4)'
     }
   };
 
   return (
-    <motion.header
-      id="header-nav"
-      initial={{ opacity: 0, y: -15 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-      className={`fixed top-4 left-0 right-0 z-50 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 ${
-        isIntroPlaying ? 'pointer-events-none' : ''
-      }`}
-    >
-      <motion.div 
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-        animate={isQuiet ? 'quiet' : 'active'}
-        variants={animVariants}
-        transition={{
-          duration: 0.45,
-          ease: [0.22, 1, 0.36, 1]
-        }}
-        className={`border transition-all duration-500 rounded-full ${
-          isAtTop ? 'border-[#DDD2C2]/45 px-8 py-3.5' : 'border-[#DDD2C2]/65 px-8 py-3'
+    <>
+      <motion.header
+        id="header-nav"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
+          isIntroPlaying ? 'pointer-events-none' : ''
         }`}
       >
-        <div className="flex items-center justify-between">
-          
-          {/* Minimalist Premium Brand Logo */}
-          <button
-            onClick={() => scrollToSection('hero')}
-            className="flex items-center space-x-3 group cursor-pointer text-left"
-            id="btn-logo-home"
-          >
-            <MudCupsLogo size={36} className="group-hover:scale-105 transition-transform duration-300" />
-            <div className="flex flex-col">
-              <span className="text-sm sm:text-base font-black tracking-[0.2em] uppercase leading-none font-sans text-[#2D241F]">
-                MUD CUPS
-              </span>
-              <span className="text-[8px] sm:text-[9px] font-medium tracking-[0.1em] mt-0.5 leading-none font-mono text-[#6A5A4D]">
-                REVOKING TRADITIONAL TASTE
-              </span>
-            </div>
-          </button>
- 
-          {/* Minimal, Thin Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-12">
-            <nav className="flex items-center space-x-12">
-              {[
-                { label: 'Menu', id: 'menu' },
-                { label: 'Visit Us', id: 'location' },
-                { label: 'Contact', id: 'contact' }
-              ].map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className="text-[11px] font-semibold uppercase tracking-[0.2em] transition-colors duration-300 cursor-pointer relative py-1 group text-[#6A5A4D] hover:text-[#2D241F]"
-                >
-                  {item.label}
-                  <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-[#8B6B4D] transition-all duration-300 ease-[0.22,1,0.36,1] group-hover:w-full" />
-                </button>
-              ))}
-            </nav>
-            <div className="w-[1px] h-4 bg-[#DDD2C2]/60" />
-            <a
-              href="https://www.instagram.com/mud_cups_ananthnagar/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:scale-105 transition-all duration-300 p-1 text-[#6A5A4D] hover:text-[#2D241F]"
-              aria-label="Instagram"
+        <motion.div 
+          animate="active"
+          variants={animVariants}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="border-b transition-all duration-700 w-full"
+        >
+          <div className="max-w-7xl mx-auto px-6 sm:px-8 h-[72px] flex items-center justify-between">
+            <Link
+              to="/#hero"
+              onClick={(e) => { e.preventDefault(); handleNavClick('/#hero', 'hero'); }}
+              className="flex items-center space-x-3 group cursor-pointer text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent rounded-[4px] py-1 pr-1"
+              id="btn-logo-home"
             >
-              <Instagram className="w-4.5 h-4.5 stroke-[1.5]" />
-            </a>
-          </div>
- 
-          {/* Mobile Menu Toggle & Instagram icon */}
-          <div className="flex md:hidden items-center space-x-2">
-            <a
-              href="https://www.instagram.com/mud_cups_ananthnagar/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-11 h-11 flex items-center justify-center transition-all duration-300 text-[#6A5A4D] hover:text-[#2D241F] rounded-full active:bg-[#DDD2C2]/20"
-              aria-label="Instagram"
-            >
-              <Instagram className="w-5 h-5 stroke-[1.5]" />
-            </a>
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="w-11 h-11 flex items-center justify-center transition-colors focus:outline-none text-[#2D241F] hover:text-[#8B6B4D] rounded-full active:bg-[#DDD2C2]/20"
-              aria-label="Toggle menu"
-              id="btn-mobile-toggle"
-            >
-              {isOpen ? <X className="w-5 h-5 stroke-[1.8]" /> : <Menu className="w-5 h-5 stroke-[1.8]" />}
-            </button>
-          </div>
-        </div>
-      </motion.div>
- 
-      {/* Elegant Mobile Menu Dropdown */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            style={{ overflow: 'hidden' }}
-            className={`md:hidden bg-[#F7F2EB] px-6 py-6 space-y-4 shadow-xl border-t border-[#DDD2C2]/40 rounded-b-3xl ${
-              !isAtTop ? 'mx-4 mt-2 rounded-2xl border border-[#DDD2C2]/50' : 'border-b border-[#DDD2C2]/50'
-            }`}
-          >
-            <div className="flex flex-col space-y-2">
-              {[
-                { label: 'Menu', id: 'menu' },
-                { label: 'Visit Us', id: 'location' },
-                { label: 'Contact', id: 'contact' }
-              ].map((item, index) => (
-                <motion.button
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.05, duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className="text-left text-sm font-bold uppercase tracking-[0.2em] text-[#6A5A4D] hover:text-[#2D241F] py-3 transition-colors cursor-pointer w-full rounded-lg active:bg-[#DDD2C2]/15"
-                >
-                  {item.label}
-                </motion.button>
-              ))}
-              <motion.a
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 3 * 0.05, duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              <MudCupsLogo className="h-10 w-10 md:h-[44px] md:w-[44px] lg:h-12 lg:w-12" />
+              <div className="flex flex-col">
+                <span className="text-sm font-black tracking-[0.2em] uppercase leading-none font-sans text-[#2D241F]">
+                  MUD CUPS
+                </span>
+                <span className="text-[8px] font-medium tracking-[0.1em] mt-0.5 leading-none font-mono text-[#6A5A4D]">
+                  REVIVING TRADITIONAL TASTE
+                </span>
+              </div>
+            </Link>
+
+            <div className="hidden lg:flex items-center space-x-[34px]">
+              <nav className="flex items-center space-x-[34px]">
+                {allNavItems.map((item) => {
+                  const isActive = getIsActive(item);
+                  return (
+                    <a
+                      key={item.id}
+                      href={item.path}
+                      onClick={(e) => { e.preventDefault(); handleNavClick(item.path, item.id); }}
+                      className={`text-[12px] uppercase tracking-[0.2em] transition-all duration-300 cursor-pointer relative py-2 px-1 rounded-[2px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent group ${
+                        isActive ? 'font-semibold text-[#8B6B4D]' : 'font-medium text-[#6A5A4D] hover:text-[#2D241F]'
+                      }`}
+                    >
+                      {item.label}
+                      <span 
+                        className={`absolute bottom-1 left-1/2 -translate-x-1/2 h-[1px] bg-[#8B6B4D] transition-all duration-300 ease-[0.22,1,0.36,1] ${
+                          isActive ? 'w-full' : 'w-0 group-hover:w-1/2'
+                        }`} 
+                      />
+                    </a>
+                  );
+                })}
+              </nav>
+
+              <div className="w-[1px] h-4 bg-[#DDD2C2]/60 ml-2" />
+
+              <a
                 href="https://www.instagram.com/mud_cups_ananthnagar/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center space-x-2 text-sm font-bold uppercase tracking-[0.2em] text-[#6A5A4D] hover:text-[#2D241F] py-3 transition-colors rounded-lg active:bg-[#DDD2C2]/15"
+                className="text-[#6A5A4D] hover:text-[#8B6B4D] transition-all duration-300 hover:scale-[1.08] ml-2 p-1 rounded-[4px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
+                aria-label="Instagram"
               >
-                <Instagram className="w-4.5 h-4.5 stroke-[2]" />
-                <span>Instagram</span>
-              </motion.a>
+                <Instagram className="w-[18px] h-[18px] stroke-[1.5]" />
+              </a>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.header>
+
+            <div className="flex lg:hidden items-center space-x-5">
+              <a
+                href="https://www.instagram.com/mud_cups_ananthnagar/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#6A5A4D] hover:text-[#8B6B4D] transition-all duration-300 hover:scale-[1.08] p-1 rounded-[4px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
+                aria-label="Instagram"
+              >
+                <Instagram className="w-[20px] h-[20px] stroke-[1.5]" />
+              </a>
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="w-9 h-9 flex items-center justify-center transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent text-[#2D241F] rounded-full"
+                aria-label="Toggle menu"
+                id="btn-mobile-toggle"
+              >
+                {isOpen ? <X className="w-5 h-5 stroke-[1.5]" /> : <Menu className="w-5 h-5 stroke-[1.5]" />}
+              </button>
+            </div>
+          </div>
+        </motion.div>
+
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              className="fixed inset-0 z-40 bg-[#F7F2EB] flex flex-col justify-center px-10 pt-20 pb-10"
+            >
+              <div className="flex flex-col space-y-6 max-h-[80vh] overflow-y-auto no-scrollbar">
+                <AnimatePresence mode="popLayout">
+                  {allNavItems.map((item, index) => {
+                    const isActive = getIsActive(item);
+                    return (
+                      <motion.a
+                        initial={{ opacity: 0, x: 20, filter: 'blur(4px)' }}
+                        animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
+                        exit={{ opacity: 0, x: 20, filter: 'blur(4px)' }}
+                        transition={{ delay: index * 0.05, duration: 0.22, ease: 'easeOut' }}
+                        key={item.id}
+                        href={item.path}
+                        onClick={(e) => { e.preventDefault(); handleNavClick(item.path, item.id); }}
+                        className={`text-left text-2xl font-semibold uppercase tracking-[0.2em] transition-colors cursor-pointer w-full flex items-center space-x-4 px-2 py-1 rounded-[4px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-4 focus-visible:ring-offset-[#F7F2EB] ${
+                          isActive ? 'text-[#8B6B4D]' : 'text-[#2D241F]'
+                        }`}
+                      >
+                        <span>{item.label}</span>
+                        {isActive && <span className="w-12 h-[2px] bg-[#8B6B4D]" />}
+                      </motion.a>
+                    );
+                  })}
+                </AnimatePresence>
+              </div>
+              <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5, duration: 0.5 }}
+                className="mt-auto pt-10 border-t border-[#DDD2C2]/40"
+              >
+                <div className="flex flex-col">
+                  <MudCupsLogo className="w-10 h-10 mb-4" />
+                  <span className="text-sm font-black tracking-[0.2em] uppercase leading-none font-sans text-[#2D241F]">
+                    MUD CUPS
+                  </span>
+                  <span className="text-[10px] font-medium tracking-[0.1em] mt-1.5 leading-none font-mono text-[#6A5A4D]">
+                    REVIVING TRADITIONAL TASTE
+                  </span>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.header>
+    </>
   );
 }

@@ -1,8 +1,9 @@
+import MudCupsLogo from './MudCupsLogo';
 import { motion } from 'motion/react';
 
 export default function FeaturedFood() {
   return (
-    <section id="featured-food" className="bg-[#FFFDF9] py-16 sm:py-24 border-b border-[#DDD2C2]/60">
+    <section id="about" className="scroll-mt-24 bg-[#FFFDF9] py-16 sm:py-24 border-b border-[#DDD2C2]/60">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
           
@@ -13,8 +14,9 @@ export default function FeaturedFood() {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="w-full lg:w-5/12 space-y-6 text-left"
           >
-            <span className="text-[11px] font-bold font-mono uppercase tracking-[0.2em] text-[#8B6B4D]">
-              CAFE SIGNATURES
+            <span className="text-[11px] font-bold font-mono uppercase tracking-[0.2em] text-[#8B6B4D] flex items-center space-x-2">
+              <MudCupsLogo size={14} className="text-[#8B6B4D] opacity-80" />
+              <span>CAFE SIGNATURES</span>
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-semibold text-[#2D241F] tracking-tight leading-[1.15]">
               Freshly Made.<br />Served Hot.

@@ -7,6 +7,7 @@ export interface MenuItem {
   description?: string;
   isVeg: boolean;
   isSpicy?: boolean;
+  isChefPick?: boolean;
 }
 
 export interface MenuCategory {

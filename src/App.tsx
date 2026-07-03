@@ -1,14 +1,36 @@
 import { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'motion/react';
 import Header from './components/Header';
-import Hero from './components/Hero';
-import FeaturedFood from './components/FeaturedFood';
-import MenuSection from './components/MenuSection';
-import Offers from './components/Offers';
-import Testimonials from './components/Testimonials';
-import LocationFooter from './components/LocationFooter';
+import { lazy, Suspense } from 'react';
+const Home = lazy(() => import('./pages/Home'));
+const MenuPage = lazy(() => import('./pages/MenuPage'));
+const GalleryPage = lazy(() => import('./pages/GalleryPage'));
+const TestimonialsPage = lazy(() => import('./pages/TestimonialsPage'));
+const VisitUsPage = lazy(() => import('./pages/VisitUsPage'));
+import Footer from './components/Footer';
 import Loader from './components/Loader';
+import BackToTop from './components/BackToTop';
 
-export default function App() {
+function ScrollToTop() {
+  const { pathname, hash } = useLocation();
+  
+  useEffect(() => {
+    if (hash) {
+      const id = hash.replace('#', '');
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [pathname, hash]);
+  
+  return null;
+}
+
+function MainApp() {
   const [isIntroActive, setIsIntroActive] = useState(() => {
     if (typeof window !== 'undefined') {
       return !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -16,18 +38,20 @@ export default function App() {
     return true;
   });
 
+  const location = useLocation();
+
   useEffect(() => {
     if (!isIntroActive) {
       document.body.style.overflow = 'unset';
       return;
     }
-
     document.body.style.overflow = 'hidden';
-
+    
+    // Set loader duration to 800ms
     const timer = setTimeout(() => {
       setIsIntroActive(false);
-    }, 1000);
-
+    }, 800);
+    
     return () => {
       document.body.style.overflow = 'unset';
       clearTimeout(timer);
@@ -38,32 +62,41 @@ export default function App() {
     <div className={`min-h-screen bg-[#F7F2EB] text-[#2D241F] overflow-x-hidden font-sans antialiased selection:bg-[#8B6B4D]/10 selection:text-[#8B6B4D] ${
       isIntroActive ? 'h-screen overflow-hidden' : ''
     }`}>
+      <ScrollToTop />
       <Loader isLoading={isIntroActive} />
       
       {/* Premium Minimalist Sticky Navigation Header */}
       <Header isIntroPlaying={isIntroActive} />
       
-      {/* Main Single Page Layout Content */}
+      {/* Main Multi-Page Layout Content */}
       <main>
-        {/* Core Hero Section with cinematic storefront & elegant CTA */}
-        <Hero isIntroActive={isIntroActive} />
-        
-        {/* Featured food signature drinks and eats section */}
-        <FeaturedFood />
-        
-        {/* Seamless Digital Menu with search, filters, and all 18 categories */}
-        <MenuSection />
-        
-        {/* Exclusive platform offers & in-person perks */}
-        <Offers />
-
-        {/* Dynamic authentic Google customer reviews */}
-        <Testimonials />
+        <Suspense fallback={<Loader isLoading={true} />}>
+          <AnimatePresence mode="wait">
+            {/* @ts-expect-error React 19 types issue with key on Routes */}
+            <Routes location={location} key={location.pathname}>
+              <Route path="/" element={<Home isIntroActive={isIntroActive} />} />
+              <Route path="/menu" element={<MenuPage />} />
+              <Route path="/gallery" element={<GalleryPage />} />
+              <Route path="/testimonials" element={<TestimonialsPage />} />
+              <Route path="/visit-us" element={<VisitUsPage />} />
+            </Routes>
+          </AnimatePresence>
+          </Suspense>
       </main>
-      
-      {/* Complete contact info, operational hours, maps, and minimal footer */}
-      <LocationFooter />
-    </div>
+        
+        {/* Footer */}
+        <Footer />
+
+        {/* Floating Back to Top Button */}
+        <BackToTop />
+      </div>
   );
 }
 
+export default function App() {
+  return (
+    <BrowserRouter>
+      <MainApp />
+    </BrowserRouter>
+  );
+}
