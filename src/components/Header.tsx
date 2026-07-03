@@ -138,7 +138,7 @@ export default function Header({ isIntroPlaying }: HeaderProps) {
             </Link>
 
             <div className="hidden lg:flex items-center space-x-[34px]">
-              <nav className="flex items-center space-x-[34px]">
+              <nav aria-label="Primary Navigation" className="flex items-center space-x-[34px]">
                 {allNavItems.map((item) => {
                   const isActive = getIsActive(item);
                   return (
@@ -187,7 +187,7 @@ export default function Header({ isIntroPlaying }: HeaderProps) {
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 className="w-9 h-9 flex items-center justify-center transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent text-[#2D241F] rounded-full"
-                aria-label="Toggle menu"
+                aria-label={isOpen ? "Close menu" : "Open menu"} aria-expanded={isOpen} aria-controls="mobile-navigation"
                 id="btn-mobile-toggle"
               >
                 {isOpen ? <X className="w-5 h-5 stroke-[1.5]" /> : <Menu className="w-5 h-5 stroke-[1.5]" />}
@@ -205,7 +205,7 @@ export default function Header({ isIntroPlaying }: HeaderProps) {
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               className="fixed inset-0 z-40 bg-[#F7F2EB] flex flex-col justify-center px-10 pt-20 pb-10"
             >
-              <div className="flex flex-col space-y-6 max-h-[80vh] overflow-y-auto no-scrollbar">
+              <nav id="mobile-navigation" className="flex flex-col space-y-6 max-h-[80vh] overflow-y-auto no-scrollbar" aria-label="Mobile Navigation">
                 <AnimatePresence mode="popLayout">
                   {allNavItems.map((item, index) => {
                     const isActive = getIsActive(item);
@@ -228,7 +228,7 @@ export default function Header({ isIntroPlaying }: HeaderProps) {
                     );
                   })}
                 </AnimatePresence>
-              </div>
+              </nav>
               <motion.div 
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}

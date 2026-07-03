@@ -131,7 +131,7 @@ export default function MenuSection() {
                 src={menuIntroImg}
                 alt="Snacks and Drinks at Mud Cups"
                 className="w-full h-full object-cover transition-all duration-1000 ease-[0.22,1,0.36,1] group-hover:scale-105"
-                loading="lazy"
+                loading="lazy" decoding="async" width="800" height="800"
               />
             </div>
           </motion.div>
@@ -175,7 +175,7 @@ export default function MenuSection() {
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search the menu..."
+                  placeholder="Search the menu..." aria-label="Search the menu"
                   className={`w-full pl-10 pr-4 bg-[#FCF9F2] border border-[#DDD2C2]/50 text-[#2D241F] placeholder-[#6A5A4D]/50 text-[14px] font-medium focus:outline-none focus:border-[#8B6B4D]/40 focus:ring-4 focus:ring-[#8B6B4D]/5 transition-all duration-300 rounded-[24px] shadow-[0_1px_2px_rgba(45,36,31,0.01)] ${isScrolled ? 'h-[38px]' : 'h-[42px]'}`}
                 />
               </div>
@@ -186,7 +186,7 @@ export default function MenuSection() {
                   <button
                     key={chip}
                     type="button"
-                    onClick={() => setActiveFilter(chip)}
+                    onClick={() => setActiveFilter(chip)} aria-pressed={activeFilter === chip}
                     className={`shrink-0 px-[16px] h-[34px] rounded-full text-[13px] font-medium transition-all duration-[180ms] border flex items-center justify-center hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#FFFDF9] ${
                       activeFilter === chip
                         ? 'bg-[#8B6B4D] border-[#8B6B4D] text-white shadow-[0_2px_8px_rgba(139,107,77,0.25)]'
@@ -402,7 +402,7 @@ export default function MenuSection() {
                                     ? 'text-emerald-600'
                                     : 'text-red-600'
                                 }`}
-                                title={item.isVeg ? 'Vegetarian' : 'Non-Vegetarian'}
+                                aria-label={item.isVeg ? 'Vegetarian' : 'Non-Vegetarian'}
                               >
                                 <span className="w-1.5 h-1.5 rounded-full bg-current opacity-80" />
                               </span>

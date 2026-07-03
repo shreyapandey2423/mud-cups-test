@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { AnimatePresence } from 'motion/react';
 import Header from './components/Header';
 import { lazy, Suspense } from 'react';
@@ -42,10 +42,10 @@ function MainApp() {
 
   useEffect(() => {
     if (!isIntroActive) {
-      document.body.style.overflow = 'unset';
+      // document.body.style.overflow = 'unset';
       return;
     }
-    document.body.style.overflow = 'hidden';
+    // document.body.style.overflow = 'hidden';
     
     // Set loader duration to 800ms
     const timer = setTimeout(() => {
@@ -53,14 +53,14 @@ function MainApp() {
     }, 800);
     
     return () => {
-      document.body.style.overflow = 'unset';
+      // document.body.style.overflow = 'unset';
       clearTimeout(timer);
     };
   }, [isIntroActive]);
 
   return (
     <div className={`min-h-screen bg-[#F7F2EB] text-[#2D241F] overflow-x-hidden font-sans antialiased selection:bg-[#8B6B4D]/10 selection:text-[#8B6B4D] ${
-      isIntroActive ? 'h-screen overflow-hidden' : ''
+      ''
     }`}>
       <ScrollToTop />
       <Loader isLoading={isIntroActive} />
@@ -79,6 +79,7 @@ function MainApp() {
               <Route path="/gallery" element={<GalleryPage />} />
               <Route path="/testimonials" element={<TestimonialsPage />} />
               <Route path="/visit-us" element={<VisitUsPage />} />
+              <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </AnimatePresence>
           </Suspense>

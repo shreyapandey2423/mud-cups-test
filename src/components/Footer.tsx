@@ -33,7 +33,7 @@ export default function Footer() {
 
           <div className="flex flex-col items-start md:items-end space-y-8 md:space-y-12">
             {/* Minimal Links */}
-            <nav className="flex flex-wrap gap-8">
+            <nav aria-label="Footer Navigation" className="flex flex-wrap gap-8">
                <Link to="/menu" aria-label="View Menu" className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#2D241F] hover:text-[#8B6B4D] transition-colors relative group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F7F2EB] rounded-[2px] px-1">
                  Menu
                  <span className="absolute -bottom-1.5 left-0 w-0 h-[1px] bg-[#8B6B4D] transition-all duration-300 ease-[0.22,1,0.36,1] group-hover:w-full" />

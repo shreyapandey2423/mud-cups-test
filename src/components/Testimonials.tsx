@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Star, CheckCircle, ArrowRight } from 'lucide-react';
 import { motion } from 'motion/react';
-import qrCodeImg from '../assets/images/review/google-review-qr.png';
+import qrCodeImg from '../assets/images/review/qr-code.png';
 
 interface AdditionalRating {
   label: string;
@@ -112,9 +112,9 @@ const ReviewCard = ({ review }: { review: Review }) => {
       {/* Top of Card */}
       <div className="flex justify-between items-start mb-5">
         <div>
-          <h4 className="text-[15px] font-semibold text-[#2D241F] leading-tight mb-1">
+          <h3 className="text-[15px] font-semibold text-[#2D241F] leading-tight mb-1">
             {review.author_name}
-          </h4>
+          </h3>
           <div className="flex items-center space-x-1">
             <CheckCircle className="w-3 h-3 text-[#8B6B4D]" />
             <span className="text-[11px] text-[#6A5A4D] font-medium tracking-wide">
@@ -140,7 +140,7 @@ const ReviewCard = ({ review }: { review: Review }) => {
           
           {isLongText && (
             <button
-              onClick={() => setIsExpanded(!isExpanded)}
+              onClick={() => setIsExpanded(!isExpanded)} aria-expanded={isExpanded} aria-label={isExpanded ? "Show less of the review" : "Read more of the review"}
               className="mt-2 text-[12px] font-medium text-[#8B6B4D] hover:text-[#2D241F] transition-colors inline-block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded-[2px] px-1 -ml-1"
             >
               {isExpanded ? 'Show Less' : 'Read More'}
@@ -261,7 +261,7 @@ export default function Testimonials() {
                 src={qrCodeImg} 
                 alt="Scan to leave a Google Review for Mud Cups" 
                 className="w-full h-full object-contain"
-                loading="lazy"
+                loading="lazy" decoding="async" width="160" height="160"
               />
             </div>
 

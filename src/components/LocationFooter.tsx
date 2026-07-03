@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { MapPin, Clock, ExternalLink, Instagram, Phone, Globe, Mail, Wifi, Car, Coffee } from 'lucide-react';
 import MudCupsLogo from './MudCupsLogo';
 import { motion } from 'motion/react';
@@ -10,7 +11,7 @@ export default function LocationFooter({ hideFooter = false }: LocationFooterPro
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#EFE6D8] border-t border-[#DDD2C2]/50 text-[#2D241F] font-sans overflow-hidden">
+    <div className="bg-[#EFE6D8] border-t border-[#DDD2C2]/50 text-[#2D241F] font-sans overflow-hidden">
       
       {/* 1. Contact / Destination Section */}
       <section id="location" className="scroll-mt-24 py-24 lg:py-32 relative">
@@ -44,9 +45,9 @@ export default function LocationFooter({ hideFooter = false }: LocationFooterPro
                 
                 {/* Address */}
                 <div>
-                  <h4 className="text-[11px] font-bold uppercase text-[#2D241F] tracking-[0.2em] font-mono mb-3">
+                  <h3 className="text-[11px] font-bold uppercase text-[#2D241F] tracking-[0.2em] font-mono mb-3">
                     Location
-                  </h4>
+                  </h3>
                   <p className="text-[15px] text-[#6A5A4D] font-normal leading-[1.8]">
                     Survey 61/14, Kammasandra,<br />
                     Near Jockey Showroom, Ananthnagar Main Road,<br />
@@ -56,9 +57,9 @@ export default function LocationFooter({ hideFooter = false }: LocationFooterPro
 
                 {/* Hours */}
                 <div>
-                  <h4 className="text-[11px] font-bold uppercase text-[#2D241F] tracking-[0.2em] font-mono mb-3">
+                  <h3 className="text-[11px] font-bold uppercase text-[#2D241F] tracking-[0.2em] font-mono mb-3">
                     Opening Hours
-                  </h4>
+                  </h3>
                   <p className="text-[15px] text-[#6A5A4D] font-normal leading-[1.8]">
                     Monday – Sunday<br />
                     10:00 AM – 11:00 PM
@@ -69,9 +70,9 @@ export default function LocationFooter({ hideFooter = false }: LocationFooterPro
               {/* Logical Group: Contact */}
               <div className="space-y-8 pt-6 border-t border-[#DDD2C2]/40">
                 <div>
-                  <h4 className="text-[11px] font-bold uppercase text-[#2D241F] tracking-[0.2em] font-mono mb-4">
+                  <h3 className="text-[11px] font-bold uppercase text-[#2D241F] tracking-[0.2em] font-mono mb-4">
                     Call Us
-                  </h4>
+                  </h3>
                   <div className="flex flex-col space-y-2">
                     <a href="tel:+918106457794" aria-label="Call Mud Cups at +91 81064 57794" className="flex items-center space-x-3 text-[15px] text-[#6A5A4D] hover:text-[#8B6B4D] transition-colors group w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#EFE6D8] rounded-[4px]">
                       <Phone className="w-4 h-4 text-[#8B6B4D]" />
@@ -92,9 +93,9 @@ export default function LocationFooter({ hideFooter = false }: LocationFooterPro
 
                 {/* Connect With Us */}
                 <div>
-                  <h4 className="text-[11px] font-bold uppercase text-[#2D241F] tracking-[0.2em] font-mono mb-4">
+                  <h3 className="text-[11px] font-bold uppercase text-[#2D241F] tracking-[0.2em] font-mono mb-4">
                     Connect With Us
-                  </h4>
+                  </h3>
                   <div className="flex flex-col space-y-2">
                     <a
                       href="https://www.instagram.com/mud_cups_ananthnagar/"
@@ -136,9 +137,9 @@ export default function LocationFooter({ hideFooter = false }: LocationFooterPro
 
                   {/* Follow Our Journey */}
                   <div className="mt-6 sm:mt-7 pt-1">
-                    <h4 className="text-[11px] font-bold uppercase text-[#8B6B4D] tracking-[0.2em] font-mono mb-2">
+                    <h3 className="text-[11px] font-bold uppercase text-[#8B6B4D] tracking-[0.2em] font-mono mb-2">
                       Follow Our Journey
-                    </h4>
+                    </h3>
                     <p className="text-[13.5px] text-[#6A5A4D] font-normal leading-[1.6] max-w-[320px] mb-5">
                       Stay updated with our latest food, special drinks, café moments, and everyday vibes.
                     </p>
@@ -250,15 +251,15 @@ export default function LocationFooter({ hideFooter = false }: LocationFooterPro
 
             <div className="flex flex-col items-start md:items-end space-y-8 md:space-y-12">
               {/* Minimal Links */}
-              <nav className="flex flex-wrap gap-8">
-                 <a href="/menu" aria-label="View Menu" className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#2D241F] hover:text-[#8B6B4D] transition-colors relative group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F7F2EB] rounded-[2px] px-1">
+              <nav aria-label="Footer Navigation" className="flex flex-wrap gap-8">
+                 <Link to="/menu" aria-label="View Menu" className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#2D241F] hover:text-[#8B6B4D] transition-colors relative group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F7F2EB] rounded-[2px] px-1">
                    Menu
                    <span className="absolute -bottom-1.5 left-0 w-0 h-[1px] bg-[#8B6B4D] transition-all duration-300 ease-[0.22,1,0.36,1] group-hover:w-full" />
-                 </a>
-                 <a href="/visit-us" aria-label="Visit Us Location Information" className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#2D241F] hover:text-[#8B6B4D] transition-colors relative group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F7F2EB] rounded-[2px] px-1">
+                 </Link>
+                 <Link to="/visit-us" aria-label="Visit Us Location Information" className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#2D241F] hover:text-[#8B6B4D] transition-colors relative group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F7F2EB] rounded-[2px] px-1">
                    Visit Us
                    <span className="absolute -bottom-1.5 left-0 w-0 h-[1px] bg-[#8B6B4D] transition-all duration-300 ease-[0.22,1,0.36,1] group-hover:w-full" />
-                 </a>
+                 </Link>
                  <a href="https://www.instagram.com/mud_cups_ananthnagar/" target="_blank" rel="noopener noreferrer" aria-label="Follow Mud Cups on Instagram" className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#2D241F] hover:text-[#8B6B4D] transition-colors relative group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F7F2EB] rounded-[2px] px-1">
                    Instagram
                    <span className="absolute -bottom-1.5 left-0 w-0 h-[1px] bg-[#8B6B4D] transition-all duration-300 ease-[0.22,1,0.36,1] group-hover:w-full" />
@@ -273,6 +274,6 @@ export default function LocationFooter({ hideFooter = false }: LocationFooterPro
           </div>
         </div>
       )}
-    </footer>
+    </div>
   );
 }

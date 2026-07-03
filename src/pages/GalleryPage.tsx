@@ -9,7 +9,7 @@ import gallery04 from '../assets/gallery/gallery-04.webp.png';
 import gallery05 from '../assets/gallery/gallery-05.webp.png';
 import gallery06 from '../assets/gallery/gallery-06.webp.png';
 import gallery07 from '../assets/gallery/gallery-07.webp.png';
-import gallery08 from '../assets/gallery/gallery-08.webp.png';
+import gallery08 from '../assets/gallery/gallery-08.webp.jpg';
 import gallery09 from '../assets/gallery/gallery-09.webp.png';
 
 const originalImages = [
@@ -115,7 +115,7 @@ export default function GalleryPage() {
                     src={image.src} 
                     alt={`Mud Cups Atmosphere ${index + 1}`}
                     className="w-full h-full object-cover object-center transform-gpu transition-all duration-300 ease-out group-hover:scale-[1.03] group-hover:brightness-105"
-                    loading="lazy"
+                    loading="lazy" decoding="async" width="560" height="375"
                   />
                 </div>
               ))}
@@ -137,7 +137,7 @@ export default function GalleryPage() {
                     src={image.src} 
                     alt={`Mud Cups Atmosphere ${index + 1}`}
                     className="w-full h-full object-cover object-center transform-gpu transition-all duration-300 ease-out group-hover:scale-[1.03] group-hover:brightness-105"
-                    loading="lazy"
+                    loading="lazy" decoding="async" width="560" height="375"
                   />
                 </div>
               ))}
@@ -154,7 +154,7 @@ export default function GalleryPage() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-[#1A1512]/90 backdrop-blur-lg"
+            role="dialog" aria-modal="true" aria-label="Image lightbox" className="fixed inset-0 z-[100] flex items-center justify-center bg-[#1A1512]/90 backdrop-blur-lg"
             onClick={handleClose}
           >
             {/* Navigation Buttons */}
