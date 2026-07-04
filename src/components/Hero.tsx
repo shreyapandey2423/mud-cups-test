@@ -2,7 +2,7 @@ import { motion, useScroll, useTransform } from 'motion/react';
 import { Sparkles, ArrowDown } from 'lucide-react';
 import ImageWithFallback from './ImageWithFallback';
 import { useRef } from 'react';
-import heroImg from '../assets/images/hero.jpg';
+import heroImg from '../assets/images/hero/hero.jpg';
 
 interface HeroProps {
   isIntroActive?: boolean;
@@ -119,7 +119,7 @@ export default function Hero({ isIntroActive = false }: HeroProps) {
             <span>Reviving Traditional Taste</span>
           </span>
         </motion.div>
-        
+
         {/* Heading */}
         <motion.h1
           initial={{ opacity: 0, y: 20 }}

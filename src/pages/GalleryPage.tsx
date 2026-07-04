@@ -2,26 +2,26 @@ import { motion, AnimatePresence } from 'motion/react';
 import { useState, useEffect, useCallback } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import PageHero from '../components/PageHero';
-import gallery01 from '../assets/gallery/gallery-01.webp.png';
-import gallery02 from '../assets/gallery/gallery-02.webp.png';
-import gallery03 from '../assets/gallery/gallery-03.webp.png';
-import gallery04 from '../assets/gallery/gallery-04.webp.png';
-import gallery05 from '../assets/gallery/gallery-05.webp.png';
-import gallery06 from '../assets/gallery/gallery-06.webp.png';
-import gallery07 from '../assets/gallery/gallery-07.webp.png';
-import gallery08 from '../assets/gallery/gallery-08.webp.png';
-import gallery09 from '../assets/gallery/gallery-09.webp.png';
+import gallery001 from '../assets/images/gallery/gallery-01.webp.png';
+import gallery002 from '../assets/images/gallery/gallery-02.webp.png';
+import gallery003 from '../assets/images/gallery/gallery-03.webp.png';
+import gallery004 from '../assets/images/gallery/gallery-04.webp.png';
+import gallery005 from '../assets/images/gallery/gallery-05.webp.png';
+import gallery006 from '../assets/images/gallery/gallery-06.webp.png';
+import gallery007 from '../assets/images/gallery/gallery-07.webp.png';
+import gallery008 from '../assets/images/gallery/gallery-08.webp.png';
+import gallery009 from '../assets/images/gallery/gallery-09.webp.png';
 
 const originalImages = [
-  { src: gallery01 },
-  { src: gallery02 },
-  { src: gallery03 },
-  { src: gallery04 },
-  { src: gallery05 },
-  { src: gallery06 },
-  { src: gallery07 },
-  { src: gallery08 },
-  { src: gallery09 },
+  { src: gallery001 },
+  { src: gallery002 },
+  { src: gallery003 },
+  { src: gallery004 },
+  { src: gallery005 },
+  { src: gallery006 },
+  { src: gallery007 },
+  { src: gallery008 },
+  { src: gallery009 },
 ];
 
 export default function GalleryPage() {
@@ -82,7 +82,7 @@ export default function GalleryPage() {
         title="Experience Mud Cups"
         description="A glimpse into our ambience, handcrafted spaces, and unforgettable moments."
       />
-      
+
       <section className="py-20 lg:py-28 relative max-w-[1700px] mx-auto w-full px-[20px] md:px-[32px] lg:px-[48px]">
         <div className="overflow-hidden w-full">
           <div 
@@ -120,7 +120,7 @@ export default function GalleryPage() {
                 </div>
               ))}
             </div>
-            
+
             {/* Second Set */}
             <div className="flex gap-[24px] pr-[24px] items-center">
               {originalImages.map((image, index) => (

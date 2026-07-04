@@ -1,13 +1,13 @@
 import MudCupsLogo from './MudCupsLogo';
 import { motion } from 'motion/react';
-import featuredFoodImg from '../assets/images/featured-food.jpg';
+import featuredFoodImg from '../assets/images/featured/featured-food.jpg.png';
 
 export default function FeaturedFood() {
   return (
     <section id="about" className="scroll-mt-24 bg-[#FFFDF9] py-16 sm:py-24 border-b border-[#DDD2C2]/60">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-          
+
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -30,7 +30,7 @@ export default function FeaturedFood() {
               From our crispy rolls to piping hot maggi bowls and freshly assembled pasta dishes, we source real ingredients daily to elevate your neighborhood cafe experience.
             </p>
           </motion.div>
- 
+
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -40,7 +40,7 @@ export default function FeaturedFood() {
           >
             {/* Decorative Offset Frame */}
             <div className="hidden lg:block absolute -top-8 -left-8 w-full h-full border border-[#DDD2C2] rounded-2xl pointer-events-none" />
-            
+
             <div className="relative rounded-2xl overflow-hidden shadow-[0_12px_40px_rgba(45,36,31,0.08)] bg-[#F7F2EB] aspect-[4/5] sm:aspect-[3/4] group z-10">
               <img
                 src={featuredFoodImg}

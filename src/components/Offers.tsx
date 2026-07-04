@@ -1,21 +1,22 @@
 import MudCupsLogo from './MudCupsLogo';
 import { motion } from 'motion/react';
-import swiggyLogo from '../assets/images/swiggy-logo.svg';
-import zomatoLogo from '../assets/images/zomato-logo.svg';
+
 import { Sparkles, ArrowRight } from 'lucide-react';
+import swiggyLogo from '../assets/images/icons/swiggy-logo.svg';
+import zomatoLogo from '../assets/images/icons/zomato-logo.svg';
 
 export default function Offers() {
   return (
     <section
       id="offers"
-       
+
       className="scroll-mt-24 bg-[#EFE6D8] py-20 lg:py-28 relative border-b border-[#DDD2C2]/60 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
-        
+
         {/* Offers Layout - Asymmetrical */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20 items-center max-w-6xl mx-auto">
-          
+
           {/* Left Column: Intro & Dine-In Perk */}
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
@@ -66,7 +67,7 @@ export default function Offers() {
             <div className="bg-[#FFFDF9] border border-[#DDD2C2]/40 p-10 sm:p-14 rounded-[2.5rem] shadow-[0_8px_32px_rgba(45,36,31,0.05)] relative overflow-hidden group">
               {/* Decorative Background Accent */}
               <div className="absolute -top-24 -right-24 w-64 h-64 bg-[#F7F2EB] rounded-full blur-3xl opacity-60 pointer-events-none transition-opacity duration-700 group-hover:opacity-100" />
-              
+
               <div className="relative z-10 space-y-10 text-left">
                 <div className="space-y-6">
                   <span className="text-[10px] font-bold font-mono text-[#8B6B4D] uppercase tracking-widest bg-[#F7F2EB] px-4 py-1.5 rounded-full border border-[#DDD2C2]/60 flex items-center gap-1.5 w-fit shadow-sm">

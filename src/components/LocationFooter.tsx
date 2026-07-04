@@ -1,3 +1,4 @@
+import locationImg from '../assets/images/location/location.jpg.png';
 import { Link } from 'react-router-dom';
 import { MapPin, Clock, ExternalLink, Instagram, Phone, Globe, Mail, Wifi, Car, Coffee } from 'lucide-react';
 import MudCupsLogo from './MudCupsLogo';
@@ -178,14 +179,7 @@ export default function LocationFooter({ hideFooter = false }: LocationFooterPro
             >
               {/* Map */}
               <div className="w-full aspect-square sm:aspect-[4/3] rounded-[24px] overflow-hidden border border-[#DDD2C2]/50 bg-[#FFFDF9] shadow-[0_8px_32px_rgba(45,36,31,0.04)] relative group">
-                <iframe
-                  title="Mud Cups Cafe Location, Bangalore"
-                  src="https://maps.google.com/maps?q=Mud%20Cups%20-%20Ananthnagar,%20Survey%2061/14,%20Kammasandra,%20Near%20Jockey%20Showroom,%20Ananthnagar%20Main%20Road,%20Electronic%20City,%20Bangalore,%20Karnataka%20560100&t=&z=16&ie=UTF8&iwloc=&output=embed"
-                  className="w-full h-full border-0 grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 ease-[0.22,1,0.36,1]"
-                  allowFullScreen={false}
-                  loading="lazy"
-                  referrerPolicy="no-referrer"
-                />
+                <img src={locationImg} alt="Mud Cups Cafe Location" className="w-full h-full object-cover grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 ease-[0.22,1,0.36,1]" />
               </div>
 
               {/* Quick Info Card */}

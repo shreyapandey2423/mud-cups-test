@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Search, Coffee, CupSoda, IceCream, Utensils, Sandwich, Pizza, Star, Scroll } from 'lucide-react';
 import { motion } from 'motion/react';
 import { categories } from '../data/menu';
-import menuIntroImg from '../assets/images/menu-intro.jpg';
+import menuIntroImg from '../assets/images/menu/menu-intro.jpg.png';
 
 export default function MenuSection() {
   const [searchQuery, setSearchQuery] = useState<string>('');
@@ -28,11 +28,11 @@ export default function MenuSection() {
       },
       { rootMargin: "-30% 0px -60% 0px", threshold: 0.1 }
     );
-    
+
     // Mud cups special
     const special = document.getElementById('mud-cups-special');
     if (special) observer.observe(special);
-    
+
     categories.forEach((cat) => {
       const el = document.getElementById(`category-${cat.id}`);
       if (el) observer.observe(el);
@@ -41,13 +41,12 @@ export default function MenuSection() {
     return () => observer.disconnect();
   }, []);
 
-
   const getFilteredMenu = () => {
     let result = categories.map(cat => {
       let filteredItems = cat.items.filter(item => {
         const matchesSearch = item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
           (item.description && item.description.toLowerCase().includes(searchQuery.toLowerCase()));
-        
+
         let matchesFilter = true;
         if (activeFilter === 'Veg') {
           matchesFilter = item.isVeg;
@@ -60,7 +59,7 @@ export default function MenuSection() {
         } else if (activeFilter === 'Desserts') {
           matchesFilter = ['ice-age', 'specials'].includes(cat.id);
         }
-        
+
         return matchesSearch && matchesFilter;
       });
       return {
@@ -106,7 +105,7 @@ export default function MenuSection() {
   return (
     <section
       id="menu"
-       
+
       className="scroll-mt-24 bg-[#F7F2EB] py-20 lg:py-28 relative border-b border-[#DDD2C2]/60 overflow-hidden"
     >
       <motion.div 
@@ -116,7 +115,7 @@ export default function MenuSection() {
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10"
       >
-        
+
         {/* Section Header with Menu Intro Image */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center mb-[20px] max-w-6xl mx-auto">
           <motion.div 
@@ -162,10 +161,10 @@ export default function MenuSection() {
         {/* Sticky Unified Navigation */}
         <div className={`sticky top-0 z-40 transition-all duration-300 ${isScrolled ? 'pt-3 pb-3 bg-[#F7F2EB]/95 backdrop-blur-md shadow-[0_2px_20px_rgba(45,36,31,0.04)] border-b border-[#DDD2C2]/40' : 'pt-2 pb-4'} -mx-6 px-6 sm:-mx-8 sm:px-8 lg:-mx-12 lg:px-12 mb-0`}>
           <div className="max-w-[1200px] mx-auto flex flex-col items-center">
-            
+
             {/* Top Row: Search & Filters */}
             <div className="flex flex-wrap flex-col md:flex-row items-center justify-center gap-4 w-full mb-[16px]">
-              
+
               {/* Search Input */}
               <div className={`relative w-full shrink-0 group transition-all duration-300 ${isScrolled ? 'md:w-[380px] lg:w-[440px]' : 'md:w-[420px] lg:w-[480px]'}`}>
                 <span className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-[#6A5A4D]/60 transition-colors group-focus-within:text-[#8B6B4D]">
@@ -269,7 +268,7 @@ export default function MenuSection() {
               </div>
               <p className="text-[14px] text-[#6A5A4D] font-normal sm:ml-8">Our most loved signature creations.</p>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
               {/* Card 1 */}
               <div className="group bg-[#FFFDF9] border border-[#DDD2C2]/50 rounded-[18px] p-5 sm:p-6 shadow-[0_2px_12px_rgba(45,36,31,0.02)] hover:shadow-[0_8px_24px_rgba(45,36,31,0.05)] transition-all duration-200 hover:-translate-y-[3px] relative overflow-hidden flex justify-between items-center">
@@ -410,7 +409,7 @@ export default function MenuSection() {
                                 {item.name}
                               </span>
                             </div>
-                            
+
                             {/* Description */}
                             {item.description && (
                               <div className="pl-[16px] mt-1 pr-4">
@@ -420,7 +419,7 @@ export default function MenuSection() {
                               </div>
                             )}
                           </div>
-                          
+
                           {/* Elegant Price */}
                           <div className="shrink-0 text-right flex items-center space-x-4 pt-0.5">
                             {(item.priceR !== undefined || item.priceL !== undefined) ? (

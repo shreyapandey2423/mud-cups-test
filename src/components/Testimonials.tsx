@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Star, CheckCircle, ArrowRight } from 'lucide-react';
 import { motion } from 'motion/react';
-import qrCodeImg from '../assets/images/review/qr-code.png';
+import qrCodeImg from '../assets/images/review/google-review-qr.png';
 
 interface AdditionalRating {
   label: string;
@@ -65,7 +65,6 @@ const reviewsData: Review[] = [
     text: "Without a doubt, this place serves one of the best hot chocolates. It's thick, creamy and rich in flavour. The Peri Peri Fries paired with the hot chocolate are highly recommended. The café offers many delicious snacks at very reasonable prices considering the quality. Parking can be limited due to traffic near Ananth Nagar, so visiting on a two-wheeler is more convenient. Overall, a fantastic café experience."
   }
 ];
-
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -132,12 +131,12 @@ const ReviewCard = ({ review }: { review: Review }) => {
         <span className="absolute -top-3 -left-2 text-[48px] leading-none text-[#8B6B4D] opacity-10 font-serif">
           ❝
         </span>
-        
+
         <div className="relative z-10 flex-grow">
           <p className={`text-[14px] text-[#4A3F35] font-normal leading-[1.7] ${!isExpanded && isLongText ? 'line-clamp-5' : ''}`}>
             {review.text}
           </p>
-          
+
           {isLongText && (
             <button
               onClick={() => setIsExpanded(!isExpanded)} aria-expanded={isExpanded} aria-label={isExpanded ? "Show less of the review" : "Read more of the review"}
@@ -185,9 +184,9 @@ export default function Testimonials() {
     <section id="testimonials" className="scroll-mt-24 bg-[#F7F2EB] py-20 lg:py-28 relative border-b border-[#DDD2C2]/60 overflow-hidden">
       {/* Subtle Texture overlay */}
       <div className="absolute inset-0 z-0 opacity-[0.02] pointer-events-none" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")' }}></div>
-      
+
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
-        
+
         {/* Section Header */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -255,7 +254,7 @@ export default function Testimonials() {
             <p className="text-[#2D241F] font-semibold text-[16px] mb-8">
               "Love your Mud Cups experience?"
             </p>
-            
+
             <div className="w-[140px] h-[140px] sm:w-[160px] sm:h-[160px] mx-auto mb-8 rounded-2xl overflow-hidden bg-white p-3 border border-[#DDD2C2]/50 shadow-sm hover:scale-[1.03] hover:shadow-md transition-all duration-[180ms] ease-out cursor-pointer">
               <img 
                 src={qrCodeImg} 
