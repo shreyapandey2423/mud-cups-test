@@ -42,10 +42,10 @@ function MainApp() {
 
   useEffect(() => {
     if (!isIntroActive) {
-      // document.body.style.overflow = 'unset';
+      document.body.style.overflow = 'unset';
       return;
     }
-    // document.body.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
     
     // Set loader duration to 800ms
     const timer = setTimeout(() => {
@@ -53,14 +53,14 @@ function MainApp() {
     }, 800);
     
     return () => {
-      // document.body.style.overflow = 'unset';
+      document.body.style.overflow = 'unset';
       clearTimeout(timer);
     };
   }, [isIntroActive]);
 
   return (
     <div className={`min-h-screen bg-[#F7F2EB] text-[#2D241F] overflow-x-hidden font-sans antialiased selection:bg-[#8B6B4D]/10 selection:text-[#8B6B4D] ${
-      ''
+      isIntroActive ? 'h-screen overflow-hidden' : ''
     }`}>
       <ScrollToTop />
       <Loader isLoading={isIntroActive} />

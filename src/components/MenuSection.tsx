@@ -131,7 +131,7 @@ export default function MenuSection() {
                 src={menuIntroImg}
                 alt="Snacks and Drinks at Mud Cups"
                 className="w-full h-full object-cover transition-all duration-1000 ease-[0.22,1,0.36,1] group-hover:scale-105"
-                loading="lazy" decoding="async" width="800" height="800"
+                loading="lazy"
               />
             </div>
           </motion.div>

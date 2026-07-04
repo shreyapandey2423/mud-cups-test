@@ -7,7 +7,6 @@ interface ImageWithFallbackProps extends React.ImgHTMLAttributes<HTMLImageElemen
   alt?: string;
   className?: string;
   loading?: 'lazy' | 'eager';
-  fetchPriority?: 'high' | 'low' | 'auto';
 }
 
 export default function ImageWithFallback({
@@ -52,8 +51,7 @@ export default function ImageWithFallback({
       onError={handleError}
       className={className}
       referrerPolicy="no-referrer"
-      decoding={props.loading === 'eager' ? 'sync' : 'async'}
-      fetchPriority={props.fetchPriority} {...props}
+      {...props}
     />
   );
 }

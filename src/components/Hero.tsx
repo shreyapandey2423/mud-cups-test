@@ -56,7 +56,7 @@ export default function Hero({ isIntroActive = false }: HeroProps) {
           fallbackSrc="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=1600"
           alt="Mud Cups Café Interior"
           className="w-full h-full object-cover object-[72%_center] sm:object-center opacity-30"
-          loading="eager" fetchPriority="high"
+          loading="eager"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#F7F2EB]/50 via-transparent to-[#F7F2EB] z-10" />
       </motion.div>

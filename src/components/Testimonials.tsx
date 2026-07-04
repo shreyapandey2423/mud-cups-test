@@ -261,7 +261,7 @@ export default function Testimonials() {
                 src={qrCodeImg} 
                 alt="Scan to leave a Google Review for Mud Cups" 
                 className="w-full h-full object-contain"
-                loading="lazy" decoding="async" width="160" height="160"
+                loading="lazy"
               />
             </div>
 

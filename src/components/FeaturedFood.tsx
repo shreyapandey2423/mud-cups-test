@@ -46,7 +46,7 @@ export default function FeaturedFood() {
                 src={featuredFoodImg}
                 alt="Fresh Food & Drinks at Mud Cups"
                 className="w-full h-full object-cover transition-all duration-1000 ease-[0.22,1,0.36,1] group-hover:scale-[1.03]"
-                loading="lazy" decoding="async" width="800" height="1000"
+                loading="lazy"
               />
             </div>
           </motion.div>
