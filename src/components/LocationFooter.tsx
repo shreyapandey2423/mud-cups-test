@@ -1,4 +1,4 @@
-import locationImg from '../assets/images/location/location.jpg.png';
+import locationImg from '../assets/images/location/location.jpg';
 import { Link } from 'react-router-dom';
 import { MapPin, Clock, ExternalLink, Instagram, Phone, Globe, Mail, Wifi, Car, Coffee } from 'lucide-react';
 import MudCupsLogo from './MudCupsLogo';

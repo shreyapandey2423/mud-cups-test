@@ -2,15 +2,15 @@ import { motion, AnimatePresence } from 'motion/react';
 import { useState, useEffect, useCallback } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import PageHero from '../components/PageHero';
-import gallery001 from '../assets/images/gallery/gallery-01.webp.png';
-import gallery002 from '../assets/images/gallery/gallery-02.webp.png';
-import gallery003 from '../assets/images/gallery/gallery-03.webp.png';
-import gallery004 from '../assets/images/gallery/gallery-04.webp.png';
-import gallery005 from '../assets/images/gallery/gallery-05.webp.png';
-import gallery006 from '../assets/images/gallery/gallery-06.webp.png';
-import gallery007 from '../assets/images/gallery/gallery-07.webp.png';
-import gallery008 from '../assets/images/gallery/gallery-08.webp.png';
-import gallery009 from '../assets/images/gallery/gallery-09.webp.png';
+import gallery001 from '../assets/images/gallery/gallery-01.jpg';
+import gallery002 from '../assets/images/gallery/gallery-02.jpg';
+import gallery003 from '../assets/images/gallery/gallery-03.jpg';
+import gallery004 from '../assets/images/gallery/gallery-04.jpg';
+import gallery005 from '../assets/images/gallery/gallery-05.jpg';
+import gallery006 from '../assets/images/gallery/gallery-06.jpg';
+import gallery007 from '../assets/images/gallery/gallery-07.jpg';
+import gallery008 from '../assets/images/gallery/gallery-08.jpg';
+import gallery009 from '../assets/images/gallery/gallery-09.jpg';
 
 const originalImages = [
   { src: gallery001 },

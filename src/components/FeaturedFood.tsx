@@ -1,6 +1,6 @@
 import MudCupsLogo from './MudCupsLogo';
 import { motion } from 'motion/react';
-import featuredFoodImg from '../assets/images/featured/featured-food.jpg.png';
+import featuredFoodImg from '../assets/images/featured/featured-food.jpg';
 
 export default function FeaturedFood() {
   return (
