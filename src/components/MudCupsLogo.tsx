@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { createPortal } from 'react-dom';
-const logoImg = '/images/logo.png';
+const logoImg = '/images/logo.jpg';
 
 interface MudCupsLogoProps {
   className?: string;
