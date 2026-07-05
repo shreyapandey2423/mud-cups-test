@@ -1,7 +1,7 @@
 import MudCupsLogo from './MudCupsLogo';
 import { motion } from 'motion/react';
 
-import { Sparkles, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 const swiggyLogo = '/images/swiggy.png';
 const zomatoLogo = '/images/zomato.png';
 
