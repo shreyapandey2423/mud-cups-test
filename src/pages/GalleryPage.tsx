@@ -12,6 +12,7 @@ const gallery007 = '/images/gallery7.jpg';
 const gallery008 = '/images/gallery8.jpg';
 const gallery009 = '/images/gallery9.jpg';
 
+
 const originalImages = [
   { src: gallery001 },
   { src: gallery002 },
