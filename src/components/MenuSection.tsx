@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Search, Coffee, CupSoda, IceCream, Utensils, Sandwich, Pizza, Star, Scroll } from 'lucide-react';
 import { motion } from 'motion/react';
 import { categories } from '../data/menu';
-import menuIntroImg from '../assets/images/menu/menu-intro.jpg';
+const menuIntroImg = '/images/menu-intro.jpg';
 
 export default function MenuSection() {
   const [searchQuery, setSearchQuery] = useState<string>('');

@@ -4,10 +4,10 @@ import FeaturedFood from '../components/FeaturedFood';
 import Offers from '../components/Offers';
 
 interface HomeProps {
-  isIntroActive: boolean;
+  isFirstVisit: boolean;
 }
 
-export default function Home({ isIntroActive }: HomeProps) {
+export default function Home({ isFirstVisit }: HomeProps) {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -15,7 +15,7 @@ export default function Home({ isIntroActive }: HomeProps) {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3 }}
     >
-      <Hero isIntroActive={isIntroActive} />
+      <Hero isFirstVisit={isFirstVisit} />
       <FeaturedFood />
       <Offers />
     </motion.div>

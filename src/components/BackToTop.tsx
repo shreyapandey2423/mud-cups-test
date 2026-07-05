@@ -1,8 +1,9 @@
+import React from "react";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'motion/react';
 import { ArrowUp } from 'lucide-react';
 import { useState } from 'react';
 
-export default function BackToTop() {
+const BackToTop = function BackToTop() {
   const { scrollY } = useScroll();
   const [isVisible, setIsVisible] = useState(false);
 
@@ -38,3 +39,4 @@ export default function BackToTop() {
     </AnimatePresence>
   );
 }
+export default React.memo(BackToTop);

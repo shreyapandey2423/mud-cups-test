@@ -1,7 +1,9 @@
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
+
 import MudCupsLogo from './MudCupsLogo';
 
-export default function Footer() {
+const Footer = function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -16,7 +18,7 @@ export default function Footer() {
           {/* Footer Logo & Brand info */}
           <div className="space-y-8 max-w-sm">
             <div className="flex items-center space-x-5">
-              <MudCupsLogo size={52} />
+              <MudCupsLogo interactive={false} size={52} />
               <div>
                 <span className="text-2xl font-semibold tracking-tight text-[#2D241F] block font-sans">
                   Mud Cups
@@ -57,3 +59,4 @@ export default function Footer() {
     </footer>
   );
 }
+export default React.memo(Footer);

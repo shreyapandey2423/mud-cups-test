@@ -1,6 +1,6 @@
 import MudCupsLogo from './MudCupsLogo';
 import { motion } from 'motion/react';
-import featuredFoodImg from '../assets/images/featured/featured-food.jpg';
+const featuredFoodImg = '/images/featured-food.jpg';
 
 export default function FeaturedFood() {
   return (
@@ -16,7 +16,7 @@ export default function FeaturedFood() {
             className="w-full lg:w-5/12 space-y-6 text-left"
           >
             <span className="text-[11px] font-bold font-mono uppercase tracking-[0.2em] text-[#8B6B4D] flex items-center space-x-2">
-              <MudCupsLogo size={14} className="text-[#8B6B4D] opacity-80" />
+              <MudCupsLogo interactive={false} size={14} className="text-[#8B6B4D] opacity-80" />
               <span>CAFE SIGNATURES</span>
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-semibold text-[#2D241F] tracking-tight leading-[1.15]">

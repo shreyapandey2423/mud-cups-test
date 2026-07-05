@@ -3,7 +3,7 @@
   "name": "Mud Cups Café",
   "icons": [
     {
-      "src": "/images/logo/logo.png",
+      "src": "/images/logo.png",
       "type": "image/png",
       "sizes": "512x512"
     }

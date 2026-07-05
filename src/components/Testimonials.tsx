@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
-import { Star, CheckCircle, ArrowRight } from 'lucide-react';
+import { useState } from 'react';
+import { Star, CheckCircle } from 'lucide-react';
 import { motion } from 'motion/react';
-import qrCodeImg from '../assets/images/review/google-review-qr.png';
 
 interface AdditionalRating {
   label: string;
@@ -183,7 +182,7 @@ export default function Testimonials() {
   return (
     <section id="testimonials" className="scroll-mt-24 bg-[#F7F2EB] py-20 lg:py-28 relative border-b border-[#DDD2C2]/60 overflow-hidden">
       {/* Subtle Texture overlay */}
-      <div className="absolute inset-0 z-0 opacity-[0.02] pointer-events-none" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")' }}></div>
+      <div className="absolute inset-0 z-0 opacity-[0.02] pointer-events-none" style={{ backgroundImage: 'url("/images/noise.svg")' }}></div>
 
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
 
@@ -222,56 +221,6 @@ export default function Testimonials() {
           ))}
         </motion.div>
 
-        {/* Review Invitation */}
-        <motion.div 
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-10%" }}
-          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-20 lg:mt-28 flex flex-col items-center text-center"
-        >
-          <span className="text-[10px] font-bold font-mono uppercase tracking-[0.2em] text-[#8B6B4D] mb-4">
-            SHARE YOUR EXPERIENCE
-          </span>
-          <h3 className="text-2xl sm:text-3xl font-semibold text-[#2D241F] tracking-tight mb-3">
-            Enjoyed Your Visit?
-          </h3>
-          <p className="text-[#6A5A4D] text-[14px] leading-[1.7] max-w-[320px] mb-10">
-            Your feedback helps us grow and helps others discover Mud Cups.
-          </p>
-
-          <a 
-            href="https://www.google.com/maps/search/Mud+Cups+Ananthnagar+Electronic+City+Bangalore"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block w-full max-w-[420px] bg-[#FFFDF9] border border-[#DDD2C2]/40 rounded-[18px] p-8 sm:p-10 shadow-[0_4px_20px_rgba(45,36,31,0.03)] hover:-translate-y-[2px] hover:shadow-[0_12px_32px_rgba(45,36,31,0.06)] transition-all duration-[180ms] ease-out group"
-          >
-            <div className="flex justify-center space-x-1 mb-5">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-[18px] h-[18px] text-[#D4AF37] fill-[#D4AF37]" />
-              ))}
-            </div>
-            <p className="text-[#2D241F] font-semibold text-[16px] mb-8">
-              "Love your Mud Cups experience?"
-            </p>
-
-            <div className="w-[140px] h-[140px] sm:w-[160px] sm:h-[160px] mx-auto mb-8 rounded-2xl overflow-hidden bg-white p-3 border border-[#DDD2C2]/50 shadow-sm hover:scale-[1.03] hover:shadow-md transition-all duration-[180ms] ease-out cursor-pointer">
-              <img 
-                src={qrCodeImg} 
-                alt="Scan to leave a Google Review for Mud Cups" 
-                className="w-full h-full object-contain"
-                loading="lazy"
-              />
-            </div>
-
-            <p className="text-[13px] text-[#4A3F35] font-medium mb-2">
-              Scan the QR code to leave a Google Review.
-            </p>
-            <p className="text-[12px] text-[#8B6B4D] font-medium opacity-90">
-              Thank you for supporting local cafés ❤️
-            </p>
-          </a>
-        </motion.div>
       </div>
     </section>
   );

@@ -1,6 +1,8 @@
-import locationImg from '../assets/images/location/location.jpg';
-import { Link } from 'react-router-dom';
-import { MapPin, Clock, ExternalLink, Instagram, Phone, Globe, Mail, Wifi, Car, Coffee } from 'lucide-react';
+import { Link } from "react-router-dom";
+import { GOOGLE_MAPS_EMBED_URL } from '../config/constants';
+
+
+import { MapPin, Clock, Instagram, Phone, Globe, Mail, Car, Coffee } from 'lucide-react';
 import MudCupsLogo from './MudCupsLogo';
 import { motion } from 'motion/react';
 
@@ -179,7 +181,17 @@ export default function LocationFooter({ hideFooter = false }: LocationFooterPro
             >
               {/* Map */}
               <div className="w-full aspect-square sm:aspect-[4/3] rounded-[24px] overflow-hidden border border-[#DDD2C2]/50 bg-[#FFFDF9] shadow-[0_8px_32px_rgba(45,36,31,0.04)] relative group">
-                <img src={locationImg} alt="Mud Cups Cafe Location" className="w-full h-full object-cover grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 ease-[0.22,1,0.36,1]" />
+                <iframe 
+                  src={GOOGLE_MAPS_EMBED_URL}
+                  width="100%" 
+                  height="100%" 
+                  style={{ border: 0 }} 
+                  allowFullScreen={true} 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Mud Cups Location Map"
+                  className="w-full h-full object-cover transition-all duration-700 ease-[0.22,1,0.36,1] grayscale-0 group-hover:grayscale-0"
+                ></iframe>
               </div>
 
               {/* Quick Info Card */}
@@ -228,7 +240,7 @@ export default function LocationFooter({ hideFooter = false }: LocationFooterPro
             {/* Footer Logo & Brand info */}
             <div className="space-y-8 max-w-sm">
               <div className="flex items-center space-x-5">
-                <MudCupsLogo size={52} />
+                <MudCupsLogo interactive={false} size={52} />
                 <div>
                   <span className="text-2xl font-semibold tracking-tight text-[#2D241F] block font-sans">
                     Mud Cups

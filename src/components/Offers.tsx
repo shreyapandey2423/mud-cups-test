@@ -2,8 +2,8 @@ import MudCupsLogo from './MudCupsLogo';
 import { motion } from 'motion/react';
 
 import { Sparkles, ArrowRight } from 'lucide-react';
-import swiggyLogo from '../assets/images/icons/swiggy-logo.svg';
-import zomatoLogo from '../assets/images/icons/zomato-logo.svg';
+const swiggyLogo = '/images/swiggy.png';
+const zomatoLogo = '/images/zomato.png';
 
 export default function Offers() {
   return (
@@ -27,7 +27,7 @@ export default function Offers() {
           >
             <div className="space-y-4">
               <span className="text-[11px] font-bold font-mono uppercase tracking-[0.2em] text-[#8B6B4D] flex items-center space-x-2">
-                <MudCupsLogo size={14} className="text-[#8B6B4D] opacity-80" />
+                <MudCupsLogo interactive={false} size={14} className="text-[#8B6B4D] opacity-80" />
                 <span>Seasonal Perks</span>
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-semibold text-[#2D241F] tracking-tight leading-[1.15]">

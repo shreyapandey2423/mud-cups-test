@@ -2,15 +2,15 @@ import { motion, AnimatePresence } from 'motion/react';
 import { useState, useEffect, useCallback } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import PageHero from '../components/PageHero';
-import gallery001 from '../assets/images/gallery/gallery-01.jpg';
-import gallery002 from '../assets/images/gallery/gallery-02.jpg';
-import gallery003 from '../assets/images/gallery/gallery-03.jpg';
-import gallery004 from '../assets/images/gallery/gallery-04.jpg';
-import gallery005 from '../assets/images/gallery/gallery-05.jpg';
-import gallery006 from '../assets/images/gallery/gallery-06.jpg';
-import gallery007 from '../assets/images/gallery/gallery-07.jpg';
-import gallery008 from '../assets/images/gallery/gallery-08.jpg';
-import gallery009 from '../assets/images/gallery/gallery-09.jpg';
+const gallery001 = '/images/gallery1.jpg';
+const gallery002 = '/images/gallery2.jpg';
+const gallery003 = '/images/gallery3.jpg';
+const gallery004 = '/images/gallery4.jpg';
+const gallery005 = '/images/gallery5.jpg';
+const gallery006 = '/images/gallery6.jpg';
+const gallery007 = '/images/gallery7.jpg';
+const gallery008 = '/images/gallery8.jpg';
+const gallery009 = '/images/gallery9.jpg';
 
 const originalImages = [
   { src: gallery001 },
@@ -75,7 +75,7 @@ export default function GalleryPage() {
       className="bg-[#F7F2EB] min-h-screen pt-[72px] relative overflow-hidden"
     >
       {/* Extremely subtle radial texture/grain */}
-      <div className="absolute inset-0 pointer-events-none opacity-[0.02]" style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/stardust.png")' }}></div>
+      <div className="absolute inset-0 pointer-events-none opacity-[0.02]" style={{ backgroundImage: 'url("/images/stardust.png")' }}></div>
 
       <PageHero 
         accent="GALLERY"
@@ -186,9 +186,9 @@ export default function GalleryPage() {
                 <motion.img
                   key={selectedIndex}
                   src={originalImages[selectedIndex].src}
-                  initial={{ opacity: 0, scale: 0.9, filter: 'blur(10px)' }}
-                  animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
-                  exit={{ opacity: 0, scale: 0.9, filter: 'blur(10px)' }}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                   className="max-w-full max-h-[85vh] object-contain rounded-xl shadow-[0_24px_64px_rgba(0,0,0,0.4)]"
                   alt="Gallery preview"

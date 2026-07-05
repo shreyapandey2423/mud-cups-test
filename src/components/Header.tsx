@@ -1,3 +1,4 @@
+import React from "react";
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, Instagram } from 'lucide-react';
 import { useState, useEffect } from 'react';
@@ -5,7 +6,8 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import MudCupsLogo from './MudCupsLogo';
 
 interface HeaderProps {
-  isIntroPlaying: boolean;
+  isFirstVisit?: boolean;
+  
 }
 
 const allNavItems = [
@@ -18,8 +20,9 @@ const allNavItems = [
   { label: 'Visit Us', path: '/visit-us', id: 'location' }
 ];
 
-export default function Header({ isIntroPlaying }: HeaderProps) {
+const Header = function Header({ isFirstVisit }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [initialIntro] = useState(isFirstVisit);
   const [isAtTop, setIsAtTop] = useState(true);
   const [activeSection, setActiveSection] = useState('hero');
   const location = useLocation();
@@ -37,34 +40,27 @@ export default function Header({ isIntroPlaying }: HeaderProps) {
 
   useEffect(() => {
     if (location.pathname !== '/') return;
-
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
       let newActive = null;
-      
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           newActive = entry.target.id;
         }
       });
-      
       if (newActive) {
         setActiveSection(newActive);
       }
     };
-
     const observerOptions = {
       root: null,
       rootMargin: '-20% 0px -60% 0px',
       threshold: 0
     };
-
     const observer = new IntersectionObserver(observerCallback, observerOptions);
-    
     ['hero', 'about', 'offers'].forEach(id => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
     });
-
     return () => observer.disconnect();
   }, [location.pathname]);
 
@@ -84,7 +80,7 @@ export default function Header({ isIntroPlaying }: HeaderProps) {
     }
   };
 
-  const getIsActive = (item: typeof allNavItems[0]) => {
+  const getIsActive = (item: any) => {
     if (item.path.startsWith('/#')) {
       return location.pathname === '/' && activeSection === item.id;
     }
@@ -108,9 +104,9 @@ export default function Header({ isIntroPlaying }: HeaderProps) {
         id="header-nav"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.4, delay: initialIntro ? 2.35 : 0, ease: [0.22, 1, 0.36, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
-          isIntroPlaying ? 'pointer-events-none' : ''
+          isFirstVisit ? 'pointer-events-none' : ''
         }`}
       >
         <motion.div 
@@ -126,7 +122,7 @@ export default function Header({ isIntroPlaying }: HeaderProps) {
               className="flex items-center space-x-3 group cursor-pointer text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent rounded-[4px] py-1 pr-1"
               id="btn-logo-home"
             >
-              <MudCupsLogo className="h-10 w-10 md:h-[44px] md:w-[44px] lg:h-12 lg:w-12" />
+              <MudCupsLogo layoutId="mud-cups-main-logo" interactive={false} className="h-10 w-10 md:h-[44px] md:w-[44px] lg:h-12 lg:w-12" />
               <div className="flex flex-col">
                 <span className="text-sm font-black tracking-[0.2em] uppercase leading-none font-sans text-[#2D241F]">
                   MUD CUPS
@@ -184,6 +180,7 @@ export default function Header({ isIntroPlaying }: HeaderProps) {
               >
                 <Instagram className="w-[20px] h-[20px] stroke-[1.5]" />
               </a>
+
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 className="w-9 h-9 flex items-center justify-center transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent text-[#2D241F] rounded-full"
@@ -211,9 +208,9 @@ export default function Header({ isIntroPlaying }: HeaderProps) {
                     const isActive = getIsActive(item);
                     return (
                       <motion.a
-                        initial={{ opacity: 0, x: 20, filter: 'blur(4px)' }}
-                        animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
-                        exit={{ opacity: 0, x: 20, filter: 'blur(4px)' }}
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: 20 }}
                         transition={{ delay: index * 0.05, duration: 0.22, ease: 'easeOut' }}
                         key={item.id}
                         href={item.path}
@@ -229,6 +226,7 @@ export default function Header({ isIntroPlaying }: HeaderProps) {
                   })}
                 </AnimatePresence>
               </nav>
+
               <motion.div 
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -236,7 +234,7 @@ export default function Header({ isIntroPlaying }: HeaderProps) {
                 className="mt-auto pt-10 border-t border-[#DDD2C2]/40"
               >
                 <div className="flex flex-col">
-                  <MudCupsLogo className="w-10 h-10 mb-4" />
+                  <MudCupsLogo interactive={false} className="w-10 h-10 mb-4" />
                   <span className="text-sm font-black tracking-[0.2em] uppercase leading-none font-sans text-[#2D241F]">
                     MUD CUPS
                   </span>
@@ -252,3 +250,4 @@ export default function Header({ isIntroPlaying }: HeaderProps) {
     </>
   );
 }
+export default React.memo(Header);
