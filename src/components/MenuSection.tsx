@@ -4,6 +4,7 @@ import { motion } from 'motion/react';
 import { categories } from '../data/menu';
 const menuIntroImg = '/images/menu-intro.jpg';
 
+
 export default function MenuSection() {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [activeFilter, setActiveFilter] = useState<string>('All');
