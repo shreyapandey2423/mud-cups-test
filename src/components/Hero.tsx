@@ -40,9 +40,20 @@ const Hero = function Hero({ isFirstVisit = false }: HeroProps) {
       id="hero"
       ref={containerRef}
       className="scroll-mt-24 relative min-h-[90vh] sm:min-h-screen flex items-center justify-center overflow-hidden bg-[#F7F2EB] py-16 sm:py-32"
-    >
-      {/* 1. LAYERED BACKGROUND SYSTEM (DEPTH & LIGHTING) */}
-      <div className="absolute inset-0 bg-[#F7F2EB] z-0" />
+    >{/* 1. LAYERED BACKGROUND SYSTEM (DEPTH & LIGHTING) */}
+<div className="absolute inset-0 z-0 overflow-hidden bg-[#2D241F]">
+  <img
+    src="/images/hero.jpg"
+    alt="Mud Cups Café"
+    fetchPriority="high"
+    loading="eager"
+    decoding="sync"
+    className="absolute inset-0 w-full h-full object-cover object-center"
+  />
+
+  <div className="absolute inset-0 bg-gradient-to-b from-[#1A1412]/45 via-[#2D241F]/15 to-[#1A1412]/70" />
+  <div className="absolute inset-0 bg-gradient-to-r from-[#1A1412]/30 via-transparent to-[#1A1412]/30" />
+</div>
 
       {/* 2. HERO CONTENT AREA */}
       <motion.div 
