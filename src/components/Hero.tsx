@@ -71,7 +71,7 @@ const Hero = function Hero({ isFirstVisit = false }: HeroProps) {
   <Sparkles className="w-3 h-3 text-[#B99872]" />
   <span>Reviving Traditional Taste</span>
 </span>
-          </span>
+          
         </motion.div>
 
         {/* Heading */}
@@ -98,14 +98,19 @@ className="text-base sm:text-lg text-white/95 leading-[2] font-normal max-w-[560
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.4, delay: introDelay + 0.15 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 hidden sm:block"
-      >
+       transition={{
+  duration: 0.4,
+  delay: introDelay + 0.10,
+  ease: easeCurve,
+}}
+className="text-base sm:text-lg text-white/95 leading-[2] font-normal max-w-[560px] mx-auto drop-shadow-[0_2px_12px_rgba(0,0,0,0.45)]"
+>
+      
        <button
   onClick={handleScrollToMenu}
   className="text-white/70 hover:text-white transition-colors cursor-pointer p-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F7F2EB] rounded-full"
   aria-label="Scroll to Menu"
->      >
+>      
           <motion.div
             animate={{ y: [0, 6, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
