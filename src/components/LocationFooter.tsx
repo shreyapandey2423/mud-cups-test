@@ -77,7 +77,7 @@ export default function LocationFooter({ hideFooter = false }: LocationFooterPro
                     Call Us
                   </h3>
                   <div className="flex flex-col space-y-2">
-                    <a href="tel:+918105457694" aria-label="Call Mud Cups at +91 81064 57794" className="flex items-center space-x-3 text-[15px] text-[#6A5A4D] hover:text-[#8B6B4D] transition-colors group w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#EFE6D8] rounded-[4px]">
+                    <a href="tel:+918105457694" aria-label="Call Mud Cups at +918105457694" className="flex items-center space-x-3 text-[15px] text-[#6A5A4D] hover:text-[#8B6B4D] transition-colors group w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8B6B4D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#EFE6D8] rounded-[4px]">
                       <Phone className="w-4 h-4 text-[#8B6B4D]" />
                       <span className="relative">
                         +91 81064 57794
